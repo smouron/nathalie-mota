@@ -18,10 +18,8 @@
 <body <?php body_class(); ?>>
 	<header id="header">
 		<h1>
-			<?php 
-				//  Affichage du titre du blog
-				echo bloginfo('name');
-			?>
+			<img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/logo_nathalie_mota.png'?>" 
+			alt="<?php echo bloginfo('name'); ?>">
 		</h1>
 		<nav id="navigation">
 			<?php 
