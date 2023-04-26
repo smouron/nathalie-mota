@@ -1,45 +1,49 @@
 <?php
 /**
- * The main template file
+ * The main template file.
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
+ * @package nathalie-motta theme
  */
 
 get_header(); ?>
 
-<?php if ( is_home() && ! is_front_page() && ! empty( single_post_title( '', false ) ) ) : ?>
-	<header class="page-header alignwide">
-		<h1 class="page-title"><?php single_post_title(); ?></h1>
-	</header><!-- .page-header -->
-<?php endif; ?>
+  <div id="wrap">
+      <section id="content">
+        <!-- Vérification s'il y a au moins 1 article -->
+      <?php if(have_posts()) : ?>
+        <div id="loop">
+            <?php while(have_posts()) : the_post(); ?>
+                <article>
+                    <h1><?php the_title(); ?></h1>
+                    <p>Publié le <?php the_time('d/m/Y'); ?>
+                        <!-- is_page() permet de déterminer si la page est en cours est une page -->
+                        <?php if(!is_page()) : ?> dans <?php the_category(', '); ?><?php endif; ?>
+                    </p>
+                    <!-- is_singular() permet de déterminer si la page en cours est un post/article -->
+                    <?php if(is_singular()) : ?>
+                        <?php the_content(); ?>
+                    <?php else : ?>
+                        <?php the_excerpt(); ?>
+                        <a href="<?php the_permalink(); ?>">Lire la suite</a>
+                    <?php endif; ?>
+                </article>
+            <?php endwhile; ?>
+        </div>
+        <div id="pagination">
+            <!-- afficher le système de pagination (s’il existe de nombreux articles) -->
+            <?php echo paginate_links(); ?>
+        </div>
+      <?php else : ?>
+        <p>Aucun résultat</p>
+      <?php endif; ?>
+      </section>
 
-<?php
-if ( have_posts() ) {
+      <aside id="sidebar">
+      </aside>
+  </div>
 
-	// Load posts loop.
-	while ( have_posts() ) {
-		the_post();
+<?php get_footer(); ?>
 
-		get_template_part( 'template-parts/content/content', get_theme_mod( 'display_excerpt_or_full_post', 'excerpt' ) );
-	}
-
-	// Previous/next page navigation.
-	twenty_twenty_one_the_posts_navigation();
-
-} else {
-
-	// If no content, include the "No posts found" template.
-	get_template_part( 'template-parts/content/content-none' );
-
-}
-
-get_footer();
+</body>
+</html>
