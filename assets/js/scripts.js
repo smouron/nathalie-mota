@@ -3,6 +3,10 @@ console.log("Script lancé !!!");
 const photoInfo = document.querySelector(".photo__info--image");
 const refPhoto = document.querySelector(".refPhoto");
 
+
+console.log(refPhoto);
+console.log(refPhoto.value);
+
 // Gestion de la fermeture et de l'ouverture de la modale avec jQuery
 (function ($) {
   $(".popup-close").click(function () {
@@ -28,12 +32,8 @@ const refPhoto = document.querySelector(".refPhoto");
 })(jQuery);
 
 //
-if (photoInfo) {
-  photoInfo.addEventListener("mouseenter", (e) => {
-    console.log(e);
-  });
-
-  photoInfo.addEventListener("mouseover", (e) => {
-    console.log(e);
+if (refPhoto) {
+  refPhoto.addEventListener("click", (e) => {
+    refPhoto.value = "Hello";
   });
 }

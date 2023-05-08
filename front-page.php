@@ -58,4 +58,7 @@
       </aside> -->
   </div>
 
+  
+  <?php echo wp_count_posts('post')->publish; ?>
+
 <?php get_footer(); ?>
