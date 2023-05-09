@@ -1,11 +1,6 @@
 console.log("Script lancé !!!");
 
 const photoInfo = document.querySelector(".photo__info--image");
-const refPhoto = document.querySelector(".refPhoto");
-
-
-console.log(refPhoto);
-console.log(refPhoto.value);
 
 // Gestion de la fermeture et de l'ouverture de la modale avec jQuery
 (function ($) {
@@ -16,6 +11,10 @@ console.log(refPhoto.value);
   $("#contact_btn_navbar").click(function () {
     // $(".popup-overlay").show();
     $(".popup-overlay").toggleClass("hidden");
+    let divContent = $(".reference").text();
+    divContent = divContent.substr(11, divContent.length);
+    console.log(divContent);
+    $(".refPhoto").val(divContent);
   });
   $("#contact_btn").click(function () {
     // $(".popup-overlay").show();
@@ -30,10 +29,3 @@ console.log(refPhoto.value);
     $(".photo__full").toggleClass("hidden");
   });
 })(jQuery);
-
-//
-if (refPhoto) {
-  refPhoto.addEventListener("click", (e) => {
-    refPhoto.value = "Hello";
-  });
-}

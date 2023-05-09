@@ -16,3 +16,5 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 5 - Création de Header.php et Footer.php
 6 - Ajout par Hook du bouton contact et création de la gestion de la popup contact avec jQuery
 7 - Ajout d'un shortcode d'un autre bouton contact qui sera présent dans les pages des descriptions des photos
+8 - Récupération de la référence de la photo avec jQuery pour la réinjecter dans le formulaire de contact
+9 -

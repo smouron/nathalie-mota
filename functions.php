@@ -113,5 +113,22 @@ function my_acf_load_value( $variable,  $field ) {
     return $return;
 }
 
+/**
+* Show CPT in archives pages (TAG & Category)
+*
+*/
+function add_custom_types_to_tax( $query ) {
+    echo(is_category());
+    echo(is_tag());
+    if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
+        // Set post type
+        $post_types = array('post','page','my_cpt_1','my_cpt_2','photo');
+ 
+        $query->set( 'post_type', $post_types );
+        return $query;
+    }
+}
+add_filter( 'pre_get_posts', 'add_custom_types_to_tax' );
 
+// get_template_part('cpt');
 

@@ -1,10 +1,7 @@
 <?php 
 	//   Vérifier l'activation de ACF
 	if ( !function_exists('get_field')) return;
-?>
 
-
-<?php 
     // Récupérer la taxonomie actuelle
     $term = get_queried_object();
     $term_id  = my_acf_load_value('ID', $term);
@@ -23,7 +20,7 @@
                 <!-- <li>Référence : <?php echo get_post_meta( get_the_ID(), 'reference', true ); ?></li> -->
 
                 <!-- Affiche les données ACF -->
-                <li>Référence : <?php the_field('reference'); ?></li>
+                <li class="reference">Référence : <?php the_field('reference'); ?></li>
                 <li>Catégorie : <?php echo $categorie; ?></li>
                 <li>Format : <?php echo $format; ?></li>
                 <li>Type : <?php the_field('type'); ?></li>

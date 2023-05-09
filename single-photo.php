@@ -22,7 +22,7 @@
 							echo '<a rel="prev" href="' . get_permalink($prev_post_id) . '" title="' . $prev_title. '" class="previous_post">';
 							if (has_post_thumbnail($prev_post_id)){
 							?>
-								<div><?php echo get_the_post_thumbnail($prev_post_id, array(80,60));?></div>
+								<div><?php echo get_the_post_thumbnail($prev_post_id, array(60,60));?></div>
 							<?php
 							}
 							else{
@@ -44,7 +44,7 @@
 							echo  '<a rel="next" href="' . get_permalink($next_post_id) . '" title="' . $next_title. '" class="next_post">';
 							if (has_post_thumbnail($next_post_id)){
 							?>
-								<div><?php echo get_the_post_thumbnail($next_post_id, array(80,60));?></div>
+								<div><?php echo get_the_post_thumbnail($next_post_id, array(60,60));?></div>
 							<?php
 							}
 							else{
@@ -57,10 +57,13 @@
 			</div>
 		</div>
 		<div class="photo__others flexcolumn">
-			<h2>Vous aimerez aussi</h2>
+			<h2>Vous aimerez aussi</h2>		
 			<div class="photo__others--images flexrow">
-				<img src="http://127.0.0.1/nathalie-motta/wp-content/uploads/2023/05/nathalie-13-scaled.jpeg" alt="" >
-				<img src="http://127.0.0.1/nathalie-motta/wp-content/uploads/2023/05/nathalie-5-scaled.jpeg" alt="" >
+				<?php 
+				// get_template_part ( 'template-parts/photo-common');
+				 ?>
+				<!-- <img src="http://127.0.0.1/nathalie-motta/wp-content/uploads/2023/05/nathalie-13-scaled.jpeg" alt="" > -->
+				<!-- <img src="http://127.0.0.1/nathalie-motta/wp-content/uploads/2023/05/nathalie-5-scaled.jpeg" alt="" > -->
 			</div>
 			<button class="btn" type="button">
 				<a href="http://127.0.0.1/nathalie-motta/">Toutes les photos</a>
@@ -69,5 +72,8 @@
 	</section>
 <?php endwhile; endif; ?>
 
-				
 <?php get_footer();?>
+
+				<?php 
+				get_template_part ( 'template-parts/photo-common');
+				 ?>
