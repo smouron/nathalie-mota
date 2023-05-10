@@ -1,4 +1,6 @@
-<?php echo('<br><hr><br>'); 
+<?php 
+echo(test.php);
+echo('<br><hr><br>'); 
 echo('Conditional Tags');
 echo('<br><br>'); ?>
 
@@ -35,6 +37,12 @@ foreach ( $categorie_cpt as $terms){
 	echo $terms->name;
 	echo('<br><br>');
 }
+$categorie_acf = get_terms('categorie-acf', array('hide_empty' => false)); 
+foreach ( $categorie_acf as $terms){
+	echo $terms->name;
+	echo('<br>');
+}
+
 echo('<hr>');
 $format_cpt = get_terms('format-cpt', array('hide_empty' => false)); 
 foreach ( $format_cpt as $terms){
@@ -75,6 +83,32 @@ echo($post_type_photo);
 echo('<br><br>');
 
 ?>
+
+ <!-- Affichage de la liste des catégories WP -->
+<ul>
+	<?php wp_list_categories( array(
+		'orderby' => 'name',
+		'show_count' => true
+	) ); ?> 
+</ul>
+
+<ul>
+	<?php wp_list_categories( array(
+		'exclude'  => array( 4,7 ),
+		'title_li' => ''
+	) ); ?>
+</ul>
+
+<ul>
+	<?php wp_list_categories( array(
+		'orderby'            => 'id',
+		'show_count'         => true,
+		'use_desc_for_title' => false,
+		'child_of'           => 8
+	) ); ?>
+</ul>
+
+<br>
 
 <?php echo('<br><hr><br>'); ?>
 

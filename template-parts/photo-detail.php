@@ -1,14 +1,22 @@
 <?php 
+	echo ('photo-detail.php');
 	//   Vérifier l'activation de ACF
 	if ( !function_exists('get_field')) return;
 
     // Récupérer la taxonomie actuelle
     $term = get_queried_object();
     $term_id  = my_acf_load_value('ID', $term);
-    // Récupération du nom de la catégorie et du format
-    $categorie  = my_acf_load_value('name', get_field('categorie'));
-    $format = my_acf_load_value('name', get_field('format'));
 
+    // Récupération du nom de la catégorie et du format
+    $categorie  = my_acf_load_value('name', get_field('categorie-acf'));
+    // $categorie  = my_acf_load_value('name', get_field('categorie-cpt'));
+
+    $format = my_acf_load_value('name', get_field('format-acf'));
+    // $format = my_acf_load_value('name', get_field('format-cpt'));
+    
+    echo('<hr>');
+    
+echo('<hr>');
 ?>
 
 <div class="container__photo flexcolumn">

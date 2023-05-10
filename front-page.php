@@ -39,15 +39,7 @@
 
                     <?php
                     // Récupérer la taxonomie actuelle
-                        $term = get_queried_object();
-                        $coucou = get_posts();
-                        
-                        // echo("Term: ");
-                        // print_r($term);
-                        // echo('<br><br>');
-                        // echo("Coucou: ");
-                        // print_r($coucou);
-                        // echo('<br><br>');
+                        $term = get_queried_object();                                              
                         $term_id  = my_acf_load_value('ID', $term);
                         // Récupération du nom de la catégorie et du format
                         $categorie  = my_acf_load_value('name', get_field('categorie')); 

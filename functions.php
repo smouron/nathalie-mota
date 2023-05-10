@@ -130,5 +130,21 @@ function add_custom_types_to_tax( $query ) {
 }
 add_filter( 'pre_get_posts', 'add_custom_types_to_tax' );
 
-// get_template_part('cpt');
+function capitaine_override_query( $wp_query ) {
+    echo('query_vars: ');
+    var_dump( $wp_query->query_vars );
+    echo('<br><br>');
+
+    echo('tax_query: ');
+    var_dump( $wp_query->tax_query );
+    echo('<br><br>');
+
+    echo('meta_query: ');
+    var_dump( $wp_query->meta_query );
+    echo('<br><br>');
+  }
+// add_action( 'pre_get_posts', 'capitaine_override_query' );
+
+  
+
 
