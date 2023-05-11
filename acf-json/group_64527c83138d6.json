@@ -46,29 +46,6 @@
             "multiple": 0
         },
         {
-            "key": "field_645b436eed6e9",
-            "label": "Catégorie CPT",
-            "name": "categorie-cpt",
-            "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "categorie-cpt",
-            "add_term": 1,
-            "save_terms": 1,
-            "load_terms": 0,
-            "return_format": "object",
-            "field_type": "radio",
-            "allow_null": 0,
-            "multiple": 0
-        },
-        {
             "key": "field_645bb30921ec4",
             "label": "Format ACF",
             "name": "format-acf",
@@ -83,29 +60,6 @@
                 "id": ""
             },
             "taxonomy": "format-acf",
-            "add_term": 1,
-            "save_terms": 1,
-            "load_terms": 0,
-            "return_format": "object",
-            "field_type": "radio",
-            "allow_null": 0,
-            "multiple": 0
-        },
-        {
-            "key": "field_645362c8bf27d",
-            "label": "Format CPT",
-            "name": "format-cpt",
-            "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "format-cpt",
             "add_term": 1,
             "save_terms": 1,
             "load_terms": 0,
@@ -176,5 +130,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1683731285
+    "modified": 1683735970
 }

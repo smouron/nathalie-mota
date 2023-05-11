@@ -1,20 +1,15 @@
 <?php
     get_header();
-    echo ('front-page.php');
+    // echo ('front-page.php');
 ?>
-  <div id="wrap"> 
-      <section id="content">
-        <h1>Nathalie Motta</h1>
-        <p>Photographe professionnelle dans l’événementiel</p>
-        <?php
-            if ( is_user_logged_in() ):
-                $current_user = wp_get_current_user(); 
-                echo "Bonjour, " . $current_user->user_firstname . " " . $current_user->user_lastname . " !";
-            else:
-                echo "Bonjour, visiteur !";
-            endif;
-        ?>
-        <br><br>
+  <div id="front-page"> 
+      <section id="content">        
+        <!-- Chargement du hero -->
+        <?php get_template_part( 'template-parts/header/hero' ); ?>
+        
+        <!-- Chargement des filtres -->
+        <?php get_template_part( 'template-parts/post/photo-filter' ); ?>
+                
         <?php   $custom_args = array(
         'post_type' => 'photo',
         // 'posts_per_page' => 1,
@@ -38,15 +33,16 @@
                 <?php if(has_post_thumbnail()) : ?>
 
                     <?php
-                    // Récupérer la taxonomie actuelle
+                        // Récupérer la taxonomie ACF actuelle
                         $term = get_queried_object();                                              
                         $term_id  = my_acf_load_value('ID', $term);
-                        // Récupération du nom de la catégorie et du format
-                        $categorie  = my_acf_load_value('name', get_field('categorie')); 
+                        // Récupération du nom de la catégorie 
+                        $categorie  = my_acf_load_value('name', get_field('categorie-acf')); 
                     ?>
 
+                    <!-- Génération du nombre de photo en fonction de l'option dans WordPress -->
                     <div class="news-info">
-                        <p class="info-title"><?php the_title(); ?></p>
+                        <h2 class="info-title"><?php the_title(); ?></h2>
                         <p class="info-tax"><?php echo $categorie; ?></p>
                         <a href="<?php the_permalink() ?>">
                         <?php the_post_thumbnail(); ?>
@@ -57,13 +53,14 @@
                 </div>
             <?php endwhile; ?>
         </div>
+        <div id="pagination">
+            <!-- afficher le système de pagination (s’il existe de nombreux articles) -->
+            <h3>Articles suivants</h3>
+            <?php echo paginate_links(); ?>
+        </div>
         <?php else : ?>
         <p>Désolé, aucun article ne correspond à cette requête</p>  
         
-        <div id="pagination">
-            <!-- afficher le système de pagination (s’il existe de nombreux articles) -->
-            <?php echo paginate_links(); ?>
-        </div>
         
         <?php endif; 
         // On réinitialise à la requête principale

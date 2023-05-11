@@ -10,6 +10,9 @@ function theme_enqueue_styles() {
     //  Chargement du style personnalisé du theme
     wp_enqueue_style( 'nathalie-motta-style', get_stylesheet_uri(), array(), '1.0' );
     
+	// FontAwesome Icons
+	wp_enqueue_style( 'fontawesome', get_theme_file_uri( '/assets/css/fontawesome.min.css' ) );
+    
     //  Chargement de style personnalisé pour le theme
     wp_enqueue_style( 'contact-style', get_stylesheet_directory_uri() . '/assets/css/contact.css', array(), '1.0' ); 
     wp_enqueue_style( 'simgle-photo-style', get_stylesheet_directory_uri() . '/assets/css/simgle-photo.css', array(), '1.0' );     
@@ -19,6 +22,8 @@ function theme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
+
+
 // Ajouter la prise en charge des images mises en avant
 add_theme_support( 'post-thumbnails' );
 
@@ -27,6 +32,7 @@ add_theme_support( 'post-thumbnails' );
 set_post_thumbnail_size( 600, 0, false );
 
 // Définir d'autres tailles d'images
+add_image_size( 'hero', 1450, 960, true );
 add_image_size( 'desktop-home', 600, 520, true );
 add_image_size( 'mobil-home', 300, 260, true );
 

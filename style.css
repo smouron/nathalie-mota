@@ -21,10 +21,10 @@ body {
     color: #23282d; 
     font-family: 'Space Mono', monospace;     
     margin: auto; 
-    width: 80vw;
-    max-width: 1440px;
+    width: 100vw;
+    /* width: 80vw; */
+    /* max-width: 1440px; */
 }
-
 
 a {    
     text-decoration: none;
@@ -50,12 +50,13 @@ ul li {
     background-color: #ffffff;
     text-align: center;
     align-items: center;  
-    width: 80vw;
-    max-width: 1440px;
+    margin: auto;
 }
 
 #header {
     height: 80px;
+    width: 80vw;
+    max-width: 1440px;
     justify-content: space-between;
 }
 
@@ -106,7 +107,7 @@ button, input[type="submit"] {
     padding: 10px;
 }
 
-#wrap {
+#front-page {
     display: flex; 
     width: 100%; 
     margin: 0 auto;
@@ -150,13 +151,119 @@ button, input[type="submit"] {
     padding:8px 40px;
     border-left: 4px solid #000000;
     border-radius: 0px;
-    transition:all 0.4s ease;
+
 }
 .btn:hover,
 .popup-contact .wpcf7-submit:hover{
     background:#000000;
     color:#ffffff;
     font-weight: 700;
+}
+
+/* HERO */
+.hero-area .hero-thumbnail {
+    position: relative;
+    margin: auto;
+    align-items: center;
+    width: 100%;
+    max-height: 966px;
+}
+
+.hero-area img {    
+    margin: auto;
+    /* object-fit: contain; */
+    object-fit: cover;
+    object-position: 50% 50%;
+    min-width: 100%;
+    /* max-height: 966px; */
+}
+
+.hero-area .title-hero {    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 96px;
+    line-height: 142px;
+    font-style: italic;
+    color: transparent;
+    /* text-shadow: 0 0 2px rgb(255, 255, 255), 0 0 2px rgb(255, 255, 255); */
+    /* text-stroke: 2px rgb(255, 255, 255); */
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
+}
+
+/* FILTRES */
+.filter-area {
+    width: 80%;
+    margin: auto;
+    padding: 0 20px;
+    justify-content: space-between;   
+}
+
+.filter-area .filterleft {
+    gap: 20px;
+}
+
+.filter-area p,
+.filter-area option {    
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.filter-area p {
+    text-transform: uppercase;
+}
+
+.filter-area option {
+    text-transform: capitalize;
+}
+
+.filter-area .select-filter {
+    position: relative;
+    display: inline-block;
+}
+
+.filter-area .option-filter {
+    width: 275px;
+    height: 40px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    border-radius: 0;
+    padding: 0 24px;
+}
+
+/* On cache la flèche d'origne des sélecteurs car non modifiable */
+.filter-area select { 
+    appearance: none;
+}
+
+/* supprimer la fléche par défaut en IE 10 et 11 */
+.filter-area select::-ms-expand {
+    display: none; 
+}
+
+.filter-area .myarrow {  
+    width: 9px;
+    height: 7px;  
+    position: absolute;
+    display: inline-block;
+    top: 40px;
+    right: 15px;
+    background: url("./assets/img/open-select.png") right / 90% no-repeat;
+}
+
+.filter-area .option-filter:active,
+.filter-area .option-filter:focus {
+    border-bottom: 1px solid transparent;
+}
+
+.filter-area:hover .myarrow,
+.myarrow:hover {
+    background: url("./assets/img/close-select.png") right / 90% no-repeat;
 }
 
 /* IMAGE PLEINE ECRAN */
@@ -270,4 +377,11 @@ button, input[type="submit"] {
     #footer {
         flex-direction: column;
     }
+}
+
+.btn:hover,
+.popup-contact .wpcf7-submit:hover{
+    background:#000000;
+    color:#ffffff;
+    font-weight: 700;
 }

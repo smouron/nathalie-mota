@@ -7,7 +7,7 @@
 <?php
 if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 	<section class="photo_detail">
-		<?php get_template_part ( 'template-parts/photo-detail'); ?>
+		<?php get_template_part ( 'template-parts/post/photo-detail'); ?>
 		
 		<div class="photo__contact flexrow">
 			<p>Cette photo vous intéresse ? <button class="btn" type="button"><?php echo do_shortcode('[contact]'); ?></button></p>
@@ -61,7 +61,7 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 			<h2>Vous aimerez aussi</h2>		
 			<div class="photo__others--images flexrow">
 				<?php 
-				// get_template_part ( 'template-parts/photo-common');
+				// get_template_part ( 'template-parts/post/photo-common');
 				 ?>
 				<!-- <img src="http://127.0.0.1/nathalie-motta/wp-content/uploads/2023/05/nathalie-13-scaled.jpeg" alt="" > -->
 				<!-- <img src="http://127.0.0.1/nathalie-motta/wp-content/uploads/2023/05/nathalie-5-scaled.jpeg" alt="" > -->
@@ -76,5 +76,5 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 <?php get_footer();?>
 
 				<?php 
-				get_template_part ( 'template-parts/photo-common');
+				get_template_part ( 'template-parts/post/photo-common');
 				 ?>
