@@ -1,7 +1,6 @@
 <!-- Article de photo -->
 <?php
 	get_header();
-	echo ('single-photo.php');
 ?>
 
 <?php

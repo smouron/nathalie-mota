@@ -1,5 +1,5 @@
 <?php 
-	echo ('photo-detail.php');
+	// echo ('photo-detail.php');
 	//   Vérifier l'activation de ACF
 	if ( !function_exists('get_field')) return;
 
@@ -17,10 +17,6 @@
     $type = get_field('type');
     $annee = get_field('annee');
     $essais = get_field('categorie-acf');
-       
-    echo('<hr>');
-    
-echo('<hr>');
 ?>
 
 <article class="container__photo flexcolumn">

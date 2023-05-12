@@ -1,6 +1,7 @@
 /* Partie en haut - Détail de la photo */
 .photo_detail {
     width: 100%;
+    max-width: 1440px;
     margin: auto;
     font-family: 'Space Mono', monospace;
 }
@@ -127,23 +128,21 @@
 
 .photo__others--images .container-common {
     width: 100%;
-    /* justify-content: space-around; */
-    /* justify-content: space-between; */
     justify-content: center;
-    /* align-content: space-between; */
     align-content: center;
     gap: 20px;
     padding: 40px 10px 70px;
 }
 
-.photo__others--images .news {
-    width: 100%;
+.photo__others--images .news {  
+    width: 100%;     
+    position: relative;
 }
 
-.photo__others--images img {
+.photo__others--images img { 
     /* object-fit: contain; */
     Object-fit: cover;
-    /* width: 100%; */
+    width: 100%;
     height: 500px;
 }
 

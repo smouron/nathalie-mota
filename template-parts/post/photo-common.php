@@ -1,5 +1,4 @@
 <?php 
-
    // [post_type] => post
    // [post_type] => photo
    // On place les critères de la requête dans un Array
@@ -19,7 +18,8 @@
       // 'category_name' => $categorie, 
       'meta_key' => 'categorie-acf',
       'meta_value' => $categorie_id,
-      'compare'   => 'LIKE' // NOT LIKE
+      'compare'   => 'LIKE', // NOT LIKE
+      'post__not_in' => array($publication),
    );
    
    //On crée ensuite une instance de requête WP_Query basée sur les critères placés dans la variables $args
@@ -35,13 +35,12 @@
 <!-- On parcourt chacun des articles résultant de la requête -->
        <?php while($query->have_posts()) : ?>
            <?php $query->the_post();?> 
-           echo();
            
            <div class="news">
                <?php if(has_post_thumbnail()) : ?>
-                    <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>"><?php the_post_thumbnail('desktop-home'); ?></a>
-               <?php endif; ?>
-           </div>
+                  <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>"><?php the_post_thumbnail('desktop-home'); ?><span class="detail-photo"></span></a>
+                  <?php endif; ?>
+            </div>
        <?php endwhile; ?>
    </div>
 <?php else : ?>
