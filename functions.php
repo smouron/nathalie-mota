@@ -19,8 +19,12 @@ function theme_enqueue_styles() {
     
     // Chargement du script JS personnalisé
     wp_enqueue_script( 'nathalie-motta-scripts', get_theme_file_uri( '/assets/js/scripts.js' ), array('jquery'), '1.0.0', true );
+
+    // activer les Dashicons sur le front-end 
+    wp_enqueue_style ( 'dashicons' ); 
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+
 
 
 
@@ -39,7 +43,8 @@ add_image_size( 'mobil-home', 300, 260, true );
 // Ajouter automatiquement le titre du site dans l'en-tête du site
 add_theme_support( 'title-tag' );
 
-// créer un lien menu
+// créer un lien pour la gestion des menus dans l'administration
+// et activation d'un menu pour le header et d'un menu pour le footer
 // Visibles ensuite dans Apparence / Menus (after_setup_theme)
 function register_my_menu(){
     register_nav_menu('main', "Menu principal");
@@ -47,7 +52,8 @@ function register_my_menu(){
  }
  add_action('after_setup_theme', 'register_my_menu');
 
- // créer des sidebars
+// créer un pour la gestion des widgets dans l'administration
+// etl'activation des sidebars
 // Visibles ensuite dans Apparence / Widgets (widgets_init)
 function register_my_sidebars(){
     register_sidebar(
@@ -101,8 +107,19 @@ function contact_btn_navbar( $items) {
 	// On retourne le code
 	return $items;
 }
-
 add_filter( 'wp_nav_menu_header-menu_items', 'contact_btn_navbar', 10, 2 );
+
+// Ajout du texte Tous droits réservés dans le pied de page
+function mention_text_navbar( $items) {	
+	$items .= '
+	<li class="menu-item menu-item-type-post_type menu-item-object-page">
+		<p id="mention_text_footer" class="mention_text">Tous droits réservés</p>
+	</li>';
+
+	// On retourne le code
+	return $items;
+}
+add_filter( 'wp_nav_menu_footer-menu_items', 'mention_text_navbar', 10, 2 );
 
 // Récupération de la valeur d'un champs personnalisé ACF
 // $variable = nom de la variable dont on veut récupérer la valeur
@@ -151,6 +168,7 @@ function capitaine_override_query( $wp_query ) {
   }
 // add_action( 'pre_get_posts', 'capitaine_override_query' );
 
-  
+
+ 
 
 

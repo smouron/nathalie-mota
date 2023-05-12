@@ -61,7 +61,7 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 			<h2>Vous aimerez aussi</h2>		
 			<div class="photo__others--images flexrow">
 				<?php 
-				// get_template_part ( 'template-parts/post/photo-common');
+				get_template_part ( 'template-parts/post/photo-common');
 				 ?>
 				<!-- <img src="http://127.0.0.1/nathalie-motta/wp-content/uploads/2023/05/nathalie-13-scaled.jpeg" alt="" > -->
 				<!-- <img src="http://127.0.0.1/nathalie-motta/wp-content/uploads/2023/05/nathalie-5-scaled.jpeg" alt="" > -->
@@ -74,7 +74,3 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 <?php endwhile; endif; ?>
 
 <?php get_footer();?>
-
-				<?php 
-				get_template_part ( 'template-parts/post/photo-common');
-				 ?>

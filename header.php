@@ -17,6 +17,9 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
+	<!-- Récupération sur Fontawesome des icones dont on aura besoin -->
+	<script src="https://kit.fontawesome.com/57bf6f7049.js" crossorigin="anonymous"></script>
+
 	<?php wp_head(); ?>
 </head>
 

@@ -67,7 +67,8 @@ ul li {
 }
 
 #header a,
-#footer a {
+#footer a,
+#mention_text_footer {
     color: #000000; 
     text-decoration: none;
     font-weight: 400;
@@ -107,11 +108,20 @@ button, input[type="submit"] {
     padding: 10px;
 }
 
+#wrap,
 #front-page {
     display: flex; 
-    width: 100%; 
-    margin: 0 auto;
+    margin: 0 auto 40px;
 }
+
+#wrap {
+    width: 80%; 
+}
+
+#front-page {
+    width: 100%; 
+}
+
 #loop article {
     margin: 0 0 50px 0; 
     background: #fff; 
@@ -197,10 +207,13 @@ button, input[type="submit"] {
 
 /* FILTRES */
 .filter-area {
-    width: 80%;
+    width: 75%;
     margin: auto;
-    padding: 0 20px;
-    justify-content: space-between;   
+    padding: 30px 20px;
+}
+
+.filter-area form {
+justify-content: space-between;   
 }
 
 .filter-area .filterleft {
@@ -253,7 +266,7 @@ button, input[type="submit"] {
     display: inline-block;
     top: 40px;
     right: 15px;
-    background: url("./assets/img/open-select.png") right / 90% no-repeat;
+    background: url("./assets/img/caret-down.svg") right / 90% no-repeat;
 }
 
 .filter-area .option-filter:active,
@@ -263,7 +276,7 @@ button, input[type="submit"] {
 
 .filter-area:hover .myarrow,
 .myarrow:hover {
-    background: url("./assets/img/close-select.png") right / 90% no-repeat;
+    background: url("./assets/img/caret-up.svg") right / 90% no-repeat;
 }
 
 /* IMAGE PLEINE ECRAN */
@@ -289,8 +302,9 @@ button, input[type="submit"] {
     width: auto;
 }
 
-.container-news {
+#front-page .container-news {
     width: 100%;
+    /* max-width: 1440px; */
     margin: 20px 0 40px;
     gap: 20px;
     flex-wrap: wrap;

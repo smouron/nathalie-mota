@@ -36,10 +36,14 @@ $categorie_cpt = get_terms('categorie-cpt', array('hide_empty' => false));
 foreach ( $categorie_cpt as $terms){
 	echo $terms->name;
 	echo('<br><br>');
+	echo $terms->slug;
+	echo('<br>');
 }
 $categorie_acf = get_terms('categorie-acf', array('hide_empty' => false)); 
 foreach ( $categorie_acf as $terms){
 	echo $terms->name;
+	echo('<br>');
+	echo $terms->slug;
 	echo('<br>');
 }
 
@@ -48,6 +52,8 @@ $format_cpt = get_terms('format-cpt', array('hide_empty' => false));
 foreach ( $format_cpt as $terms){
 	echo $terms->name;
 	echo('<br><br>');
+	echo $terms->slug;
+	echo('<br>');
 }
 
 // Affichage d'une taxonomie
@@ -81,6 +87,17 @@ echo('<br><br>');
 $post_type_photo = $post_photo->post_type;
 echo($post_type_photo);
 echo('<br><br>');
+
+// Récupération de champs personnalisé pour filter l'affichage des posts
+$term = get_queried_object();
+   $publication = get_queried_object_id();
+   $categorie_id  =  get_post_meta( get_the_ID(), 'categorie-acf', true );
+   $categorie_name  = my_acf_load_value('name', get_field('categorie-acf'));
+   $format_id  =  get_post_meta( get_the_ID(), 'format-acf', true );
+   $format_name = my_acf_load_value('name', get_field('format-acf'));
+   // $categorie  = 'mariage';
+   echo("N° publication : " . $publication . " - N° categorie: " . $categorie_id . " - Catégorie: " . $categorie_name . " - N° format: " . $format_id . " - Format: " . $format_name );
+   echo('<br>');
 
 ?>
 
@@ -164,3 +181,5 @@ echo('<br><br>');
 		echo('<br><br>');	
 	?>
 </div>
+
+
