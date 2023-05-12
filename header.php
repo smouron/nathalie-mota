@@ -25,16 +25,18 @@
 
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>	
-	<header id="header" class="header">
-		<a href="<?php echo home_url( '/' ); ?>">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_nathalie_mota.png" 
-			alt="Logo <?php echo bloginfo('name'); ?>">
-		</a>
-		<nav id="navigation">
-			<?php 
-				// Affichage du menu main déclaré dans functions.php
-				wp_nav_menu(array('theme_location' => 'main')); 
-			?>
-		</nav>
+	<header id="header" class="header flexrow">
+		<div class="container-header flexrow">
+			<a href="<?php echo home_url( '/' ); ?>">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_nathalie_mota.png" 
+				alt="Logo <?php echo bloginfo('name'); ?>">
+			</a>
+			<nav id="navigation">
+				<?php 
+					// Affichage du menu main déclaré dans functions.php
+					wp_nav_menu(array('theme_location' => 'main')); 
+				?>
+			</nav>
+		</div>
 	</header>	
 
