@@ -9,13 +9,21 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 
 ## Déroulement du projet
 
-1 - Installation de WordPress 6.1.1
-2 - Initialisation d'un thème personnalisé avec création de la structure de base
-3 - Creation dans WorPress des pages vierges : "A propos", "Mentions légales", "Vie privée" et "Tous droits réservés"
-4 - Ajout la gestion des menus avec le thème depuis WordPress et création des menus avec les liens des pages qui seront gérées par WordPress
-5 - Création de Header.php et Footer.php
-6 - Ajout par Hook du bouton contact et création de la gestion de la popup contact avec jQuery
-7 - Ajout d'un shortcode d'un autre bouton contact qui sera présent dans les pages des descriptions des photos
-8 - Récupération de la référence de la photo avec jQuery pour la réinjecter dans le formulaire de contact
-9 - Ajout du lien du post précédent et du post suivant avec les images en miniature
-10 - Création de la première version de la page d'accueil avec présentation des 8 premières photos
+1 - Installation de WordPress 6.1.1.
+2 - Initialisation d'un thème personnalisé avec création de la structure de base.
+3 - Creation dans WorPress des pages vierges : "A propos", "Mentions légales", "Vie privée" et "Tous droits réservés".
+4 - Ajout la gestion des menus avec le thème depuis WordPress et création des menus avec les liens des pages qui seront gérées par WordPress.
+5 - Création de Header.php et Footer.php.
+6 - Ajout par Hook du bouton contact et création de la gestion de la popup contact avec jQuery.
+7 - Ajout d'un shortcode d'un autre bouton contact qui sera présent dans les pages des descriptions des photos.
+8 - Récupération de la référence de la photo avec jQuery pour la réinjecter dans le formulaire de contact.
+9 - Ajout du lien du post précédent et du post suivant avec les images en miniature.
+10 - Création de la première version de la page d'accueil avec présentation des 8 premières photos.
+11 - La taxonomie (pour les catégories et les formats) a été initialement configurée dans CPT. Transfert dans ACF et mise en place de la création des fichiers de sauvegarde / exportation json dans le thème.
+12 - Mise en place de l'affichage de 2 photos communes à la photo principale dans la page de détail.
+13 - Mise en place du hero avec une image aleatoire sur la page d'accueil.
+14 - Ajout de l'apparition au survol de la souris, des icones open lightbox et detail photo sur les photos (en fonction de leur emplacement) et de l'effet d'assombrissement de la photo.
+15 - Mise en place des filtres (par encore opérationnel) mais ils s'ajustent déjà en fonction des données qu'il y a dans WordPress.
+16 - Configuration des pages A PROPOS, MENTIONS LEGALES et VIE PRIVEE. 
+17 - Ajout avec un hook de la mention "TOUS DROITS RESERVES" dans le footer.
+
