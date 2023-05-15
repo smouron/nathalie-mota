@@ -69,6 +69,7 @@
 }
 .photo__info--image  {
     position: relative;
+    margin: 0 5px;
 }
 
 .photo__info--image img {
@@ -78,25 +79,7 @@
     text-align: center;
     width: 100%;    
     height: 100%;
-    padding: 0 5px;
     transition: all 0.5s ease-in-out;
-}
-
-.photo__info--image img:hover {
-    filter: brightness(50%);
-    -webkit-filter: brightness(50%);
-}
-
-.photo__info--image .open-lightbox {
-    background-image: url("../img/eye-svgrepo-com 1.png");
-    width: 46px;
-    height: 46px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    opacity: 0;
-    transition: all 1s ease-in-out;
 }
 
 .photo__info--image:hover span {
@@ -112,6 +95,18 @@
 .site__navigation__next {
     text-align: center;
     padding: 0 10px;
+}
+
+.site__navigation__prev .wp-post-image,
+.site__navigation__next .wp-post-image {
+    width: 77px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.site__navigation__prev:hover .wp-post-image,
+.site__navigation__next:hover .wp-post-image {
+    opacity: 1;
 }
 
 .photo__contact {
@@ -135,16 +130,15 @@
     padding: 40px 10px 70px;
 }
 
-.photo__others--images .news {  
-    width: 100%;     
-    position: relative;
+.container-common .news-info {  
+    width: 100%;   
+    height: 500px;  
 }
 
 .photo__others--images img { 
     /* object-fit: contain; */
     Object-fit: cover;
     width: 100%;
-    height: 500px;
 }
 
 .photo__others .btn {

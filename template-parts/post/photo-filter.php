@@ -3,8 +3,8 @@
 ?>
 
 <div class="filter-area">
-    <i class="fa-solid fa-caret-down"></i>
-    <i class="fa-solid fa-caret-up"></i>
+    <!-- <i class="fa-solid fa-caret-down"></i> -->
+    <!-- <i class="fa-solid fa-caret-up"></i> -->
     <span class="dashicons dashicons-arrow-up"></span>
     <span class="dashicons dashicons-arrow-down"></span>
     <form class="flexrow" method="post" action="">

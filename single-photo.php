@@ -13,7 +13,6 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 			<div class="site__navigation flexrow">				
 				<div class="site__navigation__prev">
 					<!-- <?php previous_post_link( '%link', '%title', false ); ?> -->
-					<!-- <br>>&#8606 -->
 					<?php
 						$prev_post = get_previous_post();							
 						if($prev_post) {
@@ -22,11 +21,11 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 							echo '<a rel="prev" href="' . get_permalink($prev_post_id) . '" title="' . $prev_title. '" class="previous_post">';
 							if (has_post_thumbnail($prev_post_id)){
 							?>
-								<div><?php echo get_the_post_thumbnail($prev_post_id, array(60,60));?></div>
+								<div><?php echo get_the_post_thumbnail($prev_post_id, array(77,60));?></div>
 							<?php
 							}
 							else{
-								echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/no-image.jpeg" alt="Pas de photo" width="60px" ><br>';
+								echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/no-image.jpeg" alt="Pas de photo" width="77px" ><br>';
 							}
 							
 							echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/precedent.png" alt="Photo précédente" ></a>';
@@ -35,7 +34,6 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 				</div>
 				<div class="site__navigation__next">
 					<!-- <?php next_post_link( '%link', '%title', false ); ?>  -->
-					<!-- <br>&#8608 -->
 					<?php
 						$next_post = get_next_post();
 						if($next_post) {
@@ -44,11 +42,11 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 							echo  '<a rel="next" href="' . get_permalink($next_post_id) . '" title="' . $next_title. '" class="next_post">';
 							if (has_post_thumbnail($next_post_id)){
 							?>
-								<div><?php echo get_the_post_thumbnail($next_post_id, array(60,60));?></div>
+								<div><?php echo get_the_post_thumbnail($next_post_id, array(77,60));?></div>
 							<?php
 							}
 							else{
-								echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/no-image.jpeg" alt="Pas de photo" width="60px" ><br>';
+								echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/no-image.jpeg" alt="Pas de photo" width="77px" ><br>';
 							}							
 							echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/suivant.png" alt="Photo suivante" ></a>';
 						}

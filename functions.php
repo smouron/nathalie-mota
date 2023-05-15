@@ -88,7 +88,7 @@ function register_my_sidebars(){
 function contact_btn($string) {
 
 	/** Code du bouton */
-	$string .= '<a href="#" id="contact_btn" class="contact-btn">Contact</a>';
+	$string .= '<a href="#" id="contact_btn" class="contact">Contact</a>';
 
 	/** On retourne le code  */
 	return $string;
@@ -98,16 +98,17 @@ function contact_btn($string) {
 add_shortcode('contact', 'contact_btn');
 
 // Ajout un bouton contact au menu du header
+// Code désactivé - Ajout du bouton contact depuis le menu WordPress avec ajout de la class contact à ce lien
 function contact_btn_navbar( $items) {	
 	$items .= '
 	<li class="menu-item menu-item-type-post_type menu-item-object-post">
-		<a href="#" id="contact_btn_navbar" class="contact-btn">Contact</a>
+		<a href="#" id="contact_btn_navbar" class="contact">Contact</a>
 	</li>';
 
 	// On retourne le code
 	return $items;
 }
-add_filter( 'wp_nav_menu_header-menu_items', 'contact_btn_navbar', 10, 2 );
+// add_filter( 'wp_nav_menu_header-menu_items', 'contact_btn_navbar', 10, 2 );
 
 // Ajout du texte Tous droits réservés dans le pied de page
 function mention_text_navbar( $items) {	

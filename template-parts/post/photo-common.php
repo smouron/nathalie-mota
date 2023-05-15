@@ -7,7 +7,7 @@
 
    // Récupération du n° de la catégorie pour filtrage
    $categorie_id  =  get_post_meta( get_the_ID(), 'categorie-acf', true );
-   // $categorie_name  = my_acf_load_value('name', get_field('categorie-acf'));
+   $categorie_name  = my_acf_load_value('name', get_field('categorie-acf'));
      
    // echo($post_type_photo);
    $custom_args = array(
@@ -31,18 +31,30 @@
 ?>
  <!-- On vérifie si le résultat de la requête contient des articles -->
   <?php if($query->have_posts()) : ?>
-   <div class="container-common flexrow">
+   <article class="container-common flexrow">
 <!-- On parcourt chacun des articles résultant de la requête -->
        <?php while($query->have_posts()) : ?>
            <?php $query->the_post();?> 
+
+            <?php
+               // Récupérer la taxonomie ACF actuelle
+               $term = get_queried_object();                                              
+               $term_id  = my_acf_load_value('ID', $term);
+               // Récupération du nom de la catégorie 
+               $categorie  = my_acf_load_value('name', get_field('categorie-acf')); 
+            ?>
            
-           <div class="news">
+           <div class="news-info brightness">
                <?php if(has_post_thumbnail()) : ?>
-                  <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>"><?php the_post_thumbnail('desktop-home'); ?><span class="detail-photo"></span></a>
-                  <?php endif; ?>
+                  <h2 class="info-title"><?php the_title(); ?></h2>
+                  <h3 class="info-tax"><?php echo $categorie; ?></h3>
+                  <?php the_post_thumbnail('desktop-home'); ?>
+                  <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>"><span class="detail-photo"></span></a>                            
+                  <span class="open-lightbox"></span>
+               <?php endif; ?>
             </div>
        <?php endwhile; ?>
-   </div>
+   </article>
 <?php else : ?>
    <p>Désolé, aucun article ne correspond à cette requête</p>  
 <?php endif; 
