@@ -17,8 +17,9 @@ function theme_enqueue_styles() {
     wp_enqueue_style( 'contact-style', get_stylesheet_directory_uri() . '/assets/css/contact.css', array(), '1.0' ); 
     wp_enqueue_style( 'simgle-photo-style', get_stylesheet_directory_uri() . '/assets/css/simgle-photo.css', array(), '1.0' );     
     
-    // Chargement du script JS personnalisé
-    wp_enqueue_script( 'nathalie-motta-scripts', get_theme_file_uri( '/assets/js/scripts.js' ), array('jquery'), '1.0.0', true );
+    // Chargement des script JS personnalisés
+    wp_enqueue_script( 'nathalie-motta-scripts', get_theme_file_uri( '/assets/js/scripts.js' ), array('jquery'), '1.0.1', true );    
+    wp_enqueue_script( 'nathalie-motta-filtres', get_theme_file_uri( '/assets/js/filtres.js' ), array(), '1.0.0', true );
 
     // activer les Dashicons sur le front-end 
     wp_enqueue_style ( 'dashicons' ); 
