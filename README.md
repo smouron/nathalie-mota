@@ -26,4 +26,8 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 15 - Mise en place des filtres (par encore opérationnel) mais ils s'ajustent déjà en fonction des données qu'il y a dans WordPress.
 16 - Configuration des pages A PROPOS, MENTIONS LEGALES et VIE PRIVEE. 
 17 - Ajout avec un hook de la mention "TOUS DROITS RESERVES" dans le footer.
+18 - Modification du lien Contact pour pouvoir l'intégrer directement dans le menu dans WP et suppression de son ajout par Hook.
+19 - Activation du fonctionnements des filtres avec gestion par GET.
+
+
 
