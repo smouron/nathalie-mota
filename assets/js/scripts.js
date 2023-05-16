@@ -5,23 +5,9 @@ const contactBtn = document.querySelectorAll(".contact");
 const popupOverlay = document.querySelector(".popup-overlay");
 const popupClose = document.querySelector(".popup-close");
 
-// photo en pleine page
-const photoInfo = document.querySelector(".photo__info--image");
-const lightbox = document.querySelector(".lightbox");
-const openLightboxs = document.querySelectorAll(".openLightbox");
-const visiblelightbox = document.querySelector(".visible");
-
 // Gestion de la fermeture et de l'ouverture de la modale avec jQuery
 (function ($) {
   $(document).ready(function () {
-    $(".photo__info--image").click(function () {
-      $(".lightbox").toggleClass("hidden");
-    });
-
-    $(".lightbox").click(function () {
-      $(".lightbox").toggleClass("hidden");
-    });
-
     $("#load-more").click(function (e) {
       console.log(e);
 
@@ -51,15 +37,6 @@ contactBtn.forEach((contact) => {
 });
 
 // Refermeture de la pop contact au clic
-// popupClose.addEventListener("click", () => {
-//   popupOverlay.classList.add("hidden");
-// });
-
-// openLightboxs.forEach((openLightbox) => {
-//   openLightbox.addEventListener("click", (e) => {
-//     console.log(e);
-//     let test1 = openLightbox.nextElementSibling;
-//     test1.classList.add("visible");
-//     test1.classList.remove("hidden");
-//   });
-// });
+popupClose.addEventListener("click", () => {
+  popupOverlay.classList.add("hidden");
+});

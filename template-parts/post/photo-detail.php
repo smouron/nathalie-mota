@@ -80,9 +80,6 @@
             <?php the_post_thumbnail(); ?>
             <span class="openLightbox"></span>
         </div>
-        <div class="lightbox hidden">                
-            <?php the_post_thumbnail('large'); ?>
-        </div>
     </div>
 </article>
 
