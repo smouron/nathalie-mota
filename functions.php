@@ -82,6 +82,10 @@ function register_my_sidebars(){
  }
  add_action('widgets_init', 'register_my_sidebars'); 
 
+
+/** On publie le shortcode  */
+add_shortcode('contact', 'contact_btn');
+
  /**
  * Shortcode pour ajouter un bouton contact
  */
@@ -169,7 +173,43 @@ function capitaine_override_query( $wp_query ) {
   }
 // add_action( 'pre_get_posts', 'capitaine_override_query' );
 
-
- 
+function weichie_load_more() { 
+    $ajaxposts = new WP_Query([
+      'post_type' => 'photo',
+    //   'posts_per_page' => 8,
+      'orderby' => 'date',
+      'order' => $order,
+      'paged' => $_POST['paged'],
+      'meta_query'    => array(
+          'relation'      => 'AND', 
+          array(
+              'key'       => 'categorie-acf',
+              'compare'   => 'LIKE', 
+              'value'     =>  $categorie_id,
+          ),
+          array(
+              'key'       => 'format-acf',
+              'compare'   => 'LIKE',
+              'value'     => $format_id,
+          )
+        ),
+    ]);
+  
+    $response = '';
+    // Récupération du nombre maximum de pages
+    // $max_pages = $ajaxposts->max_num_pages;
+  
+    if($ajaxposts->have_posts()) {
+      while($ajaxposts->have_posts()) : $ajaxposts->the_post();
+        $response .= get_template_part('template-parts/post/publication');
+      endwhile;
+    } else {
+      $response = '';
+    
+    }
+    exit;
+  }
+  add_action('wp_ajax_weichie_load_more', 'weichie_load_more');
+  add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
 
 

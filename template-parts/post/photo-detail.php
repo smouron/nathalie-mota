@@ -78,9 +78,9 @@
         <div class="photo__info--image flexcolumn brightness">
             <!-- permet d’afficher l’image mise en avant -->
             <?php the_post_thumbnail(); ?>
-            <span class="open-lightbox"></span>
+            <span class="openLightbox"></span>
         </div>
-        <div class="photo__full lightbox hidden">                
+        <div class="lightbox hidden">                
             <?php the_post_thumbnail('large'); ?>
         </div>
     </div>

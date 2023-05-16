@@ -121,7 +121,7 @@ button, input[type="submit"] {
 
 #wrap,
 #front-page {
-    display: flex; 
+    /* display: flex;  */
     margin: 0 auto 40px;
 }
 
@@ -217,6 +217,11 @@ button, input[type="submit"] {
 }
 
 /* FILTRES */
+form {    
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
 .filter-area {
     width: 75%;
     margin: auto;
@@ -247,12 +252,13 @@ justify-content: space-between;
 }
 
 .filter-area .select-filter {
+    width: 275px;
     position: relative;
     display: inline-block;
 }
 
 .filter-area .option-filter {
-    width: 275px;
+    width: 100%;
     height: 40px;
     border: 1px solid #000000;
     background-color: #ffffff;
@@ -282,7 +288,7 @@ justify-content: space-between;
 
 .filter-area .option-filter:active,
 .filter-area .option-filter:focus {
-    border-bottom: 1px solid transparent;
+    /* border-bottom: 1px solid transparent; */
 }
 
 
@@ -311,8 +317,8 @@ justify-content: space-between;
 
 .container-news {
     width: 100%;
-    /* max-width: 1440px; */
-    margin: 20px 0 40px;
+    max-width: 1440px;
+    margin: 20px auto 40px;
     gap: 20px;
     flex-wrap: wrap;
     text-align: center;
@@ -393,8 +399,13 @@ justify-content: space-between;
     opacity: 0.5;
 }
 
+.thumbnail {
+    width: 100%;
+    height: 100%;
+}
+
 .news-info:hover .detail-photo,
-.news-info:hover .open-lightbox,
+.news-info:hover .openLightbox,
 .news-info:hover .info-title,
 .news-info:hover .info-tax {
     opacity: 1;
@@ -413,7 +424,7 @@ justify-content: space-between;
     transition: all 1s ease-in-out;
 }
 
-.open-lightbox {
+.openLightbox {
     position: absolute;
     cursor: pointer;
     background-image: url("./assets/img/eye-svgrepo-com 1.png");

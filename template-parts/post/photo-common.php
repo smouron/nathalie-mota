@@ -46,12 +46,17 @@
            
            <div class="news-info brightness">
                <?php if(has_post_thumbnail()) : ?>
-                  <h2 class="info-title"><?php the_title(); ?></h2>
-                  <h3 class="info-tax"><?php echo $categorie; ?></h3>
-                  <?php the_post_thumbnail('desktop-home'); ?>
-                  <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>"><span class="detail-photo"></span></a>                            
-                  <span class="open-lightbox"></span>
-               <?php endif; ?>
+                  <div class="thumbnail">
+                     <h2 class="info-title"><?php the_title(); ?></h2>
+                     <h3 class="info-tax"><?php echo $categorie; ?></h3>
+                     <?php the_post_thumbnail('desktop-home'); ?>
+                     <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>"><span class="detail-photo"></span></a>                            
+                     <span class="openLightbox"></span>
+                  </div>        
+                  <div class="lightbox hidden">                
+                        <?php the_post_thumbnail('large'); ?>
+                  </div>
+                  <?php endif; ?>
             </div>
        <?php endwhile; ?>
    </article>
