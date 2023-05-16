@@ -45,7 +45,7 @@ class lightbox {
    * @param {string} url de l'image et retournera un élément html/php
    */
   builDOM(url) {
-    const dom = document.createElement("div");
+    const dom = document.createElement("div");git 
     dom.classList.add("lightbox");
     dom.innerHTML = `<div class="closeLightbox">
         <img src="${link}" alt="">
