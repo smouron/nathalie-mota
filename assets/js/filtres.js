@@ -11,10 +11,11 @@ if (document.readyState === "complete") {
 
 function monScript() {
   // Script JS pour gestion des filtres
-  const filtreCategorie = document.getElementById("categorie");
-  const filtreFormat = document.getElementById("format");
-  const filtreDate = document.getElementById("date");
+
+  const body = document.querySelector("body");
   const filtres = document.querySelectorAll(".option-filter");
+  const allDashicons = document.querySelectorAll(".dashicons");
+  const allSelect = document.querySelectorAll("select");
 
   // Initialiastion des données à rajouter à l'url
   let valueCategorie = "?categorie=";
@@ -78,6 +79,56 @@ function monScript() {
 
       // Rechargement de la page avec la nouvelle URL
       window.location.href = "index.php" + valueSubmit;
+    });
+  });
+
+  // Réinitialisation des flèches des select si on click en dehors
+  body.addEventListener("click", (e) => {
+    if (e.target.tagName != "select" && e.target.tagName != "SELECT") {
+      initArrow();
+    }
+  });
+
+  // Fonction pour rechercher un mot dans une variable
+  // retourne vrai si le mot est trouvé, si non retourne false
+  function findWord(word, str) {
+    return RegExp("\\b" + word + "\\b").test(str);
+  }
+
+  // Réinitialisation de l'affichage des flèches sur les select
+  const initArrow = () => {
+    allDashicons.forEach((dashicons) => {
+      if (findWord("up", dashicons.className)) {
+        dashicons.classList.add("hidden");
+      }
+      if (findWord("down", dashicons.className)) {
+        dashicons.classList.remove("hidden");
+      }
+    });
+  };
+
+  // Passer de la flèche qui descend à la flèqhe qui monte
+  // et inversement
+  const arrow = (arg) => {
+    allDashicons.forEach((dashicons) => {
+      if (findWord(arg, dashicons.className)) {
+        if (findWord("up", dashicons.className)) {
+          dashicons.classList.toggle("hidden");
+        }
+        if (findWord("down", dashicons.className)) {
+          dashicons.classList.toggle("hidden");
+        }
+      }
+    });
+  };
+
+  // Détection du click sur un select
+  // et modification de la flèche correpondante
+  allSelect.forEach((select) => {
+    select.addEventListener("click", (e) => {
+      initArrow();
+      // console.log(select.id);
+      arrow(select.id);
     });
   });
 }

@@ -276,14 +276,14 @@ justify-content: space-between;
     display: none; 
 }
 
-.filter-area .myarrow {  
-    width: 9px;
-    height: 7px;  
+.filter-area .dashicons {  
+    /* width: 9px; */
+    /* height: 7px;   */
     position: absolute;
     display: inline-block;
-    top: 40px;
+    top: 32px;
     right: 15px;
-    background: url("./assets/img/caret-down.svg") right / 90% no-repeat;
+    /* background: url("./assets/img/caret-down.svg") right / 90% no-repeat; */
 }
 
 .filter-area .option-filter:active,
