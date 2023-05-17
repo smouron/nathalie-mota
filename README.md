@@ -29,3 +29,4 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 18 - Modification du lien Contact pour pouvoir l'intégrer directement dans le menu dans WP et suppression de son ajout par Hook.
 19 - Activation du fonctionnements des filtres avec gestion par GET.
 20 - Mise en place d'une lightbox pour les photos avec JS et CSS (source grafikart.fr).
+21 - Mise en place de la gestion des flèches avec JS sur les filtres.
