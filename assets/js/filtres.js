@@ -109,14 +109,22 @@ function monScript() {
 
   // Passer de la flèche qui descend à la flèqhe qui monte
   // et inversement
+  // et force la flèche qui descend sur les 2 autres selects
   const arrow = (arg) => {
     allDashicons.forEach((dashicons) => {
       if (findWord(arg, dashicons.className)) {
-        if (findWord("up", dashicons.className)) {
+        if (
+          findWord("up", dashicons.className) ||
+          findWord("down", dashicons.className)
+        ) {
           dashicons.classList.toggle("hidden");
         }
+      } else {
+        if (findWord("up", dashicons.className)) {
+          dashicons.classList.add("hidden");
+        }
         if (findWord("down", dashicons.className)) {
-          dashicons.classList.toggle("hidden");
+          dashicons.classList.remove("hidden");
         }
       }
     });
@@ -126,8 +134,7 @@ function monScript() {
   // et modification de la flèche correpondante
   allSelect.forEach((select) => {
     select.addEventListener("click", (e) => {
-      initArrow();
-      // console.log(select.id);
+      // initArrow();
       arrow(select.id);
     });
   });

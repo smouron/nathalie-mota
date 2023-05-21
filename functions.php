@@ -69,6 +69,7 @@ function register_my_sidebars(){
             'after_title'   => '</h2>'
         )
     );
+
    
     register_sidebar(
         array(
@@ -81,6 +82,8 @@ function register_my_sidebars(){
             'after_title'   => '</h2>'
         )
     );
+
+
  }
  add_action('widgets_init', 'register_my_sidebars'); 
 
