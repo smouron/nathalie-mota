@@ -75,11 +75,11 @@
                 </li>
             </ul>
         </div>
-        <div class="  flexcolumn brightness">
+        <div class="photo__info--image flexcolumn brightness">
             <!-- permet d’afficher l’image mise en avant -->
-            <?php the_post_thumbnail(); ?>
+            <?php the_post_thumbnail(); ?>            
             <span class="openLightbox"></span>
-        </div>
+        </div> 
     </div>
 </article>
 

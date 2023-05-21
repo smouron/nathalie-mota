@@ -13,7 +13,8 @@ class lightbox {
     const openLightboxs = document.querySelectorAll(".openLightbox");
     openLightboxs.forEach((openLightbox) => {
       openLightbox.addEventListener("click", (e) => {
-        console.log(e);
+        // console.log(e);
+        console.log(e.currentTarget.previousElementSibling.getAttribute("src"));
         //   On stop le comportement par défaut
         e.preventDefault();
         link = e.currentTarget.previousElementSibling.getAttribute("src");
@@ -45,7 +46,7 @@ class lightbox {
    * @param {string} url de l'image et retournera un élément html/php
    */
   builDOM(url) {
-    const dom = document.createElement("div");git 
+    const dom = document.createElement("div");
     dom.classList.add("lightbox");
     dom.innerHTML = `<div class="closeLightbox">
         <img src="${link}" alt="">
