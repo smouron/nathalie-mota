@@ -30,3 +30,7 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 19 - Activation du fonctionnements des filtres avec gestion par GET.
 20 - Mise en place d'une lightbox pour les photos avec JS et CSS (source grafikart.fr).
 21 - Mise en place de la gestion des flèches avec JS sur les filtres.
+22 - Mise ne place du padding des photos sur la page d'accueil avec gestion des filtres
+23 - Création du bouton pour le menu hambuger
+24 - Mise en place du passage automatique du menu classique au menu hambuger en fonction de la largeur
+25 - Début de création du menu pour mobil
