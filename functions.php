@@ -6,7 +6,7 @@ if ( ! function_exists( 'wp_body_open' ) ) {
     }
 }
 
-function theme_enqueue_styles() {
+function nathalie_motta_theme_enqueue() {
     //  Chargement du style personnalisé du theme
     wp_enqueue_style( 'nathalie-motta-style', get_stylesheet_uri(), array(), '1.0' );
     
@@ -14,18 +14,18 @@ function theme_enqueue_styles() {
 	wp_enqueue_style( 'fontawesome', get_theme_file_uri( '/assets/css/fontawesome.min.css' ) );
     
     //  Chargement de style personnalisé pour le theme
-    wp_enqueue_style( 'contact-style', get_stylesheet_directory_uri() . '/assets/css/contact.css', array(), '1.0' ); 
-    wp_enqueue_style( 'simgle-photo-style', get_stylesheet_directory_uri() . '/assets/css/simgle-photo.css', array(), '1.0' );     
-    
+    wp_enqueue_style( 'nathalie-motta-contact-style', get_stylesheet_directory_uri() . '/assets/css/contact.css', array(), '1.0' ); 
+    wp_enqueue_style( 'nathalie-motta-simgle-photo-style', get_stylesheet_directory_uri() . '/assets/css/simgle-photo.css', array(), '1.0' );     
+    wp_enqueue_style( 'nathalie-motta-lightbox-style', get_stylesheet_directory_uri() . '/assets/css/lightbox.css', array(), '1.0' );     
     // Chargement des script JS personnalisés
     wp_enqueue_script( 'nathalie-motta-scripts', get_theme_file_uri( '/assets/js/scripts.js' ), array('jquery'), '1.0.1', true );    
-    wp_enqueue_script( 'nathalie-motta-filtres', get_theme_file_uri( '/assets/js/filtres.js' ), array(), '1.0.0', true );   
-    wp_enqueue_script( 'nathalie-motta-lightbox', get_theme_file_uri( '/assets/js/lightbox.js' ), array(), '1.0.0', true );
+    wp_enqueue_script( 'nathalie-motta-scripts-filtres', get_theme_file_uri( '/assets/js/filtres.js' ), array(), '1.0.0', true );   
+    wp_enqueue_script( 'nathalie-motta-scripts-lightbox', get_theme_file_uri( '/assets/js/lightbox.js' ), array(), '1.0.0', true );
 
     // activer les Dashicons sur le front-end 
     wp_enqueue_style ( 'dashicons' ); 
 }
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'nathalie_motta_theme_enqueue' );
 
 
 
@@ -82,10 +82,9 @@ function register_my_sidebars(){
             'after_title'   => '</h2>'
         )
     );
-
-
  }
  add_action('widgets_init', 'register_my_sidebars'); 
+
 
  /**
  * Shortcode pour ajouter un bouton contact
@@ -142,6 +141,7 @@ function my_acf_load_value( $variable,  $field ) {
     return $return;
 }
 
+
 /**
 * Show CPT in archives pages (TAG & Category)
 *
@@ -158,59 +158,5 @@ function add_custom_types_to_tax( $query ) {
     }
 }
 add_filter( 'pre_get_posts', 'add_custom_types_to_tax' );
-
-function capitaine_override_query( $wp_query ) {
-    echo('query_vars: ');
-    var_dump( $wp_query->query_vars );
-    echo('<br><br>');
-
-    echo('tax_query: ');
-    var_dump( $wp_query->tax_query );
-    echo('<br><br>');
-
-    echo('meta_query: ');
-    var_dump( $wp_query->meta_query );
-    echo('<br><br>');
-  }
-// add_action( 'pre_get_posts', 'capitaine_override_query' );
-
-function weichie_load_more() { 
-    $ajaxposts = new WP_Query([
-      'post_type' => 'photo',
-    //   'posts_per_page' => 8,
-      'orderby' => 'date',
-      'order' => $order,
-      'paged' => $_POST['paged'],
-      'meta_query'    => array(
-          'relation'      => 'AND', 
-          array(
-              'key'       => 'categorie-acf',
-              'compare'   => 'LIKE', 
-              'value'     =>  $categorie_id,
-          ),
-          array(
-              'key'       => 'format-acf',
-              'compare'   => 'LIKE',
-              'value'     => $format_id,
-          )
-        ),
-    ]);
   
-    $response = '';
-    // Récupération du nombre maximum de pages
-    // $max_pages = $ajaxposts->max_num_pages;
-  
-    if($ajaxposts->have_posts()) {
-      while($ajaxposts->have_posts()) : $ajaxposts->the_post();
-        $response .= get_template_part('template-parts/post/publication');
-      endwhile;
-    } else {
-      $response = '';
-    
-    }
-    exit;
-  }
-  add_action('wp_ajax_weichie_load_more', 'weichie_load_more');
-  add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
-
-
+  include get_template_directory() . '/includes/ajax.php';

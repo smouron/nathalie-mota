@@ -51,6 +51,7 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 							echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/suivant.png" alt="Photo suivante" ></a>';
 						}
 					?>
+					
 				</div>
 			</div>
 		</div>

@@ -25,5 +25,7 @@
     <a href="<?php the_permalink() ?>" alt="<?php the_title(); ?>"><span class="detail-photo"></span></a>                            
     <?php the_post_thumbnail(); ?>
     <span class="openLightbox"></span>
+    <?php get_template_part('template-parts/post/lightbox'); ?> 
 </div> 
+
 <?php endif; ?> 

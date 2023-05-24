@@ -24,9 +24,6 @@
         <div class="photo__info--description flexcolumn">
             <h1><?php the_title(); ?></h1>
             <ul class="flexcolumn">
-                <!-- Affiche les données - Méthode classique -->                    
-                <!-- <li>Référence : <?php echo get_post_meta( get_the_ID(), 'reference', true ); ?></li> -->
-
                 <!-- Affiche les données ACF -->
                 <li class="reference">Référence : 
                     <?php 
@@ -65,13 +62,7 @@
                     ?>
                 </li>
                 <li>Année : 
-                    <?php 
-                    if($annee) {                           
-                        echo $annee;
-                    } else {
-                        echo the_time( 'Y' );
-                    }
-                    ?>
+                    <?php echo the_time( 'Y' ); ?>
                 </li>
             </ul>
         </div>
@@ -80,6 +71,7 @@
             <?php the_post_thumbnail(); ?>            
             <span class="openLightbox"></span>
         </div> 
+        
     </div>
 </article>
 

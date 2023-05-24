@@ -3,59 +3,48 @@
 // console.log("Script lightbox lancé !!!");
 
 // photo en pleine page
-let link = "";
 
-/**
- * @property {HTMLElement} element
- */
-class lightbox {
-  static init() {
-    const openLightboxs = document.querySelectorAll(".openLightbox");
-    openLightboxs.forEach((openLightbox) => {
-      openLightbox.addEventListener("click", (e) => {
-        // console.log(e);
-        console.log(e.currentTarget.previousElementSibling.getAttribute("src"));
-        //   On stop le comportement par défaut
-        e.preventDefault();
-        link = e.currentTarget.previousElementSibling.getAttribute("src");
-        new lightbox(link);
-      });
-    });
-  }
+// Récupération des tous les icones Lightbox présent
+const listOpenLightbox = document.querySelectorAll(".openLightbox");
+const listLightbox = document.querySelectorAll(".lightbox");
+const listLightboxClose = document.querySelectorAll(".lightbox__close");
+const listLightboxPrev = document.querySelectorAll(".lightbox__prev");
+const listLightboxNext = document.querySelectorAll(".lightbox__next");
 
-  /**
-   * @param {string} url de l'image
-   */
-  constructor() {
-    //   const element = this.builDOM();
-    //   document.body.appendChild(element);
-    this.element = this.builDOM();
-    document.body.appendChild(this.element);
-  }
+// console.log(listOpenLightbox);
+// console.log(listLightbox);
 
-  /**
-   * Ferme la lightbox
-   * @param {MouseEvent} e
-   */
-  close(e) {
+listOpenLightbox.forEach((openLightbox) => {
+  openLightbox.addEventListener("click", (e) => {
+    //   On stop le comportement par défaut
     e.preventDefault();
-    this.element.parentElement.removeChild(this.element);
-  }
+    // Récupération de l'élément du DOM qui suit l'icone pour afficher la Lightbox
+    next = e.currentTarget.nextElementSibling;
+    console.log(next);
+    next.classList.remove("hidden");
+  });
+});
 
-  /**
-   * @param {string} url de l'image et retournera un élément html/php
-   */
-  builDOM(url) {
-    const dom = document.createElement("div");
-    dom.classList.add("lightbox");
-    dom.innerHTML = `<div class="closeLightbox">
-        <img src="${link}" alt="">
-      </div>`;
-    dom
-      .querySelector(".closeLightbox")
-      .addEventListener("click", this.close.bind(this));
-    return dom;
-  }
-}
+listLightboxClose.forEach((lightboxClose) => {
+  lightboxClose.addEventListener("click", (e) => {
+    e.preventDefault();
+    // si on click sur la croix, cela referme la lightbox
+    listLightbox.forEach((lightbox) => {
+      lightbox.classList.add("hidden");
+    });
+  });
+});
 
-lightbox.init();
+listLightboxPrev.forEach((lightboxPrev) => {
+  lightboxPrev.addEventListener("click", (e) => {
+    console.log(e);
+    console.log("Photo précédent");
+  });
+});
+
+listLightboxNext.forEach((lightboxNext) => {
+  lightboxNext.addEventListener("click", (e) => {
+    console.log(e);
+    console.log("Photo suivante");
+  });
+});

@@ -83,8 +83,8 @@ if (isset($_GET["date"])) {
                 <!-- une balise select ou input ne peut pas être imbriquée directement dans form -->
                 <select class="option-filter" name="date" id="date">
                     <option value=""></option>
-                    <option value="asc" <?php if($order === "asc" ): ?>selected<?php endif; ?>>nouveauté</option>
-                    <option value="desc" <?php if($order === "desc"): ?>selected<?php endif; ?>>Les plus anciens</option>
+                    <option value="desc" <?php if($order === "desc"): ?>selected<?php endif; ?>>nouveauté</option>
+                    <option value="asc" <?php if($order === "asc" ): ?>selected<?php endif; ?>>Les plus anciens</option>
                 </select>
                 <!-- <input type="submit" value="order" title="Date" /> -->
             </div>

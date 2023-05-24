@@ -35,8 +35,6 @@ function monScript() {
       let filtreName = filtre.name;
       let filtreValue = filtre.value;
 
-      console.log(filtre);
-
       let index = filtre.selectedIndex;
 
       // Recherce dans l'URL la présence des paramètres des filtres
@@ -133,7 +131,7 @@ function monScript() {
   // Détection du click sur un select
   // et modification de la flèche correpondante
   allSelect.forEach((select) => {
-    select.addEventListener("click", (e) => {
+    select.addEventListener("click", () => {
       // initArrow();
       arrow(select.id);
     });
