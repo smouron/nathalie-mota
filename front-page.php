@@ -116,7 +116,7 @@
         </form>
 
 
-      <!-- <aside id="sidebar">
+      <!-- <aside id="widget-area">
       </aside> -->
   </div>
 <?php get_footer(); ?>

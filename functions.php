@@ -57,25 +57,24 @@ function register_my_menu(){
 // créer un pour la gestion des widgets dans l'administration
 // etl'activation des sidebars
 // Visibles ensuite dans Apparence / Widgets (widgets_init)
-function register_my_sidebars(){
+function nathalie_motta_widgets(){
     register_sidebar(
         array(
-            'name' => "Sidebar principale",
+            'name' => "Widget Sidebar",
             'id' => 'main-sidebar',
-            'description' => "La sidebar principale",
+            'description' => "Widget pour la sidebar principale",
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h2 class="widget-title">',
             'after_title'   => '</h2>'
         )
     );
-
    
     register_sidebar(
         array(
-            'name' => "Sidebar du footer",
-            'id' => 'footer-sidebar',
-            'description' => "La sidebar principale",
+            'name' => "Widget footer",
+            'id' => 'footer-widget',
+            'description' => "Widget pour le pied de page",
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h2 class="widget-title">',
@@ -83,7 +82,7 @@ function register_my_sidebars(){
         )
     );
  }
- add_action('widgets_init', 'register_my_sidebars'); 
+ add_action('widgets_init', 'nathalie_motta_widgets'); 
 
 
  /**
@@ -124,7 +123,7 @@ function mention_text_navbar( $items) {
 	// On retourne le code
 	return $items;
 }
-add_filter( 'wp_nav_menu_footer-menu_items', 'mention_text_navbar', 10, 2 );
+// add_filter( 'wp_nav_menu_footer-menu_items', 'mention_text_navbar', 10, 2 );
 
 // Récupération de la valeur d'un champs personnalisé ACF
 // $variable = nom de la variable dont on veut récupérer la valeur
