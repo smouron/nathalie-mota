@@ -15,6 +15,7 @@ let max_pages = document.getElementById("max_pages").value;
 // Gestion de la pagination des photos
 (function ($) {
   $(document).ready(function () {
+    // Gestion du bouton pour voir plus de photos
     $("#load-more").click(function (e) {
       console.log(e);
 
@@ -43,51 +44,29 @@ let max_pages = document.getElementById("max_pages").value;
       });
     });
 
-    // Chargment des commentaires en Ajax
-    $(".js-load-comments").click(function (e) {
-      // Empêcher l'envoi classique du formulaire
-      e.preventDefault();
+    // Gestion de la fermeture et de l'ouverture du menu
+    // dans une modale pour la version mobile
+    $(".btn-modal").click(function (e) {
+      console.log(e);
+      // $(".modal__content").animate(
+      //   { height: "toggle", opacity: "toggle" },
+      //   1000
+      // );
+      $(".modal__content").toggleClass("animate-modal");
+      $(".modal__content").toggleClass("open");
+      $(".btn-modal").toggleClass("close");
+    });
+    $("a").click(function () {
+      if ($(".modal__content").hasClass("open")) {
+        // $(".modal__content").animate(
+        //   { height: "toggle", opacity: "toggle" },
 
-      // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
-      const ajaxurl = $(this).data("ajaxurl");
-
-      // Les données de notre formulaire
-      // ⚠️ Ne changez pas le nom "action" !
-      const data = {
-        action: $(this).data("action"),
-        nonce: $(this).data("nonce"),
-        postid: $(this).data("postid"),
-      };
-
-      // Pour vérifier qu'on a bien récupéré les données
-      console.log("-- ajaxurl --");
-      console.log(ajaxurl);
-      console.log("-- data --");
-      console.log(data);
-
-      // Requête Ajax en JS natif via Fetch
-      fetch(ajaxurl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Cache-Control": "no-cache",
-        },
-        body: new URLSearchParams(data),
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response);
-
-          // En cas d'erreur
-          if (!response.success) {
-            alert(response.data);
-            return;
-          }
-
-          // Et en cas de réussite
-          $(this).hide(); // Cacher le formulaire
-          $(".comments").html(response.data); // Et afficher le HTML
-        });
+        //   1000
+        // );
+        $(".modal__content").removeClass("animate-modal");
+        $(".modal__content").removeClass("open");
+        $(".btn-modal").removeClass("close");
+      }
     });
   });
 })(jQuery);

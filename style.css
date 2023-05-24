@@ -58,7 +58,7 @@ ul li {
     height: 80px;
     width: 100vw;
     -webkit-box-shadow: 0px 11px 12px -7px rgba(126, 126, 126, 0.226); 
-    box-shadow: 0px 11px 12px -7px rgba(126, 126, 126, 0.226);
+    box-shadow: 0px 11px 12px -7px rgba(126, 126, 126, 0.226);    
 }
 
 .container-header {
@@ -98,6 +98,110 @@ ul li {
 
 #header nav ul li {
     padding: 0 20px; 
+}
+
+#navigation {
+    position: relative;    
+  }
+
+/* Menu des */
+#navigation .menu-header-menu-container {
+    opacity: 1;
+    transition: all .3s ease-in-out;
+}
+
+/* Menu mobile */
+.btn-modal {
+    opacity: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    background-color: transparent;
+    gap: 8px;
+    width: 40px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 3em;
+    cursor: pointer;  
+  }
+  
+.btn-modal .line {
+    opacity: 1;
+    /* opacity: 0; */
+    height: 2px;
+    background-color: #000;
+    display: block;
+    width: 100%;
+    margin: 0;
+    transition: all .3s ease-in-out;
+  }
+  
+  /* Création du bouton pour fermer */
+#modal__burger:hover .line:nth-child(2),
+.btn-modal.close .line:nth-child(2) {
+    opacity: 0;
+  }
+
+#modal__burger:hover .line:first-child,
+.btn-modal.close .line:first-child {
+    transform: rotate(45deg) translate3d(8px, 6px, 0);
+  }
+
+#modal__burger:hover  span.line:last-child,
+.btn-modal.close  span.line:last-child {
+    transform: rotate(-45deg) translate3d(8px, -6px, 0);
+  }
+
+/*  **********************************  */
+/*    Media query : max-width: 780px    */
+/*  **********************************  */
+@media all and (max-width: 780px) {
+    #navigation .menu-header-menu-container {
+        opacity: 0;
+    }
+
+    #navigation .menu-header-menu-container a{
+        display: inline-block;
+        transform: translateY(-200px);
+        height: 0;
+    }
+
+    #modal__burger {
+        opacity: 1;
+    }
+}
+
+.modal__content {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    z-index: -50;
+    opacity: 0;
+    width: 100%;
+    height: 0;
+    background: #E00000;
+    /* display: none; */
+    transition: all .3s ease-in-out;
+}
+
+.animate-modal {
+    opacity: 1;
+    height: auto;
+    z-index: 50;
+}
+
+#modal__content li {
+    /* height: 40px; */
+    padding: 40px !important;
+}
+
+#modal__content a {
+    color: white;
+    font-size: 23px;
 }
 
 #footer ul li {

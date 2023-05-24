@@ -158,4 +158,7 @@ function add_custom_types_to_tax( $query ) {
 }
 add_filter( 'pre_get_posts', 'add_custom_types_to_tax' );
   
-  include get_template_directory() . '/includes/ajax.php';
+// Partie pour gerer le padding de l'affichage des photos  
+include get_template_directory() . '/includes/ajax.php';
+
+ 
