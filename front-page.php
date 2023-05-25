@@ -101,7 +101,7 @@
             <!-- afficher le système de pagination (s’il existe de nombreux articles) -->
             <!-- <h3>Articles suivants</h3> -->
             <?php if ($max_pages > 1): ?>
-            <a href="#!" class="btn_load-more btn__primary" id="load-more">Charger plus</a>
+            <a href="#" class="btn_load-more" id="load-more">Charger plus</a>
             <span class="camera"></span>
             <?php endif ?>
         </div>
