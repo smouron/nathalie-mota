@@ -266,24 +266,61 @@ button, input[type="submit"] {
 
 
 /* BOUTONS */
+.btn_load-more,
 .btn,
 .popup-contact .wpcf7-submit{
-    display:inline-block;
-    background-color:#ffffff;
+    /* display:inline-block; */
     color:#000000;
     font-weight: 400;
+    line-height: 20px;
+    padding: 8px 20px;
+    transition: all .3s ease-in-out;
+}
+
+.btn,
+.popup-contact .wpcf7-submit{
+    background-color:#ffffff;
+    color:#000000;
     font-size: 14px;
     line-height: 20px;
-    padding:8px 40px;
+    padding: 8px 40px;
     border-left: 4px solid #000000;
     border-radius: 0px;
-
 }
+
+.btn_load-more {
+    position: relative;
+    background-color:#D8D8D8;
+    font-size: 12px;
+}
+
+.btn_load-more::after {
+    content: "";
+    position: absolute;
+    background: url("./assets/img/camera-svgrepo-com.svg") center center / 100% 100%;
+    background-repeat: no-repeat;    
+    top: 50%;
+    left: 50%;     
+    transform: translate3d(-50%, -50%, 0);
+    width: 16px;
+    height: 13px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
 .btn:hover,
 .popup-contact .wpcf7-submit:hover{
     background:#000000;
     color:#ffffff;
     font-weight: 700;
+}
+
+.btn_load-more:hover {
+    background-color:#000000;
+}
+
+.btn_load-more:hover::after {
+    opacity: 1;
 }
 
 /* HERO */
@@ -499,7 +536,6 @@ justify-content: space-between;
 .openLightbox {
     position: absolute;
     cursor: pointer;
-
     background: url("./assets/img/fullscreen.png") center center / 100% 100%;
     background-repeat: no-repeat;
     width: 40px;
