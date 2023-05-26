@@ -201,11 +201,9 @@ ul li {
 }
 
 #modal__content .menu-header-menu-container ul {        
-    height: 90%;
+    height: 80%;
     flex-direction: column;
-    /* justify-content: space-between; */
     justify-content: space-around;
-    /* justify-content: center; */
     padding: 20px
 }
 

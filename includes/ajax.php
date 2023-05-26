@@ -26,7 +26,7 @@ function nathalie_motta_load_more() {
   $paged = $_POST['paged'];
 
   // Configuration du filtre
-    $query = new WP_Query([
+    $query_more = new WP_Query([
       'post_type' => 'photo',
         // 'posts_per_page' => 8,
       'posts_per_page' => get_option( 'posts_per_page'), // Valeur par défaut
@@ -50,8 +50,8 @@ function nathalie_motta_load_more() {
      
     $response = '';
   
-    if($query->have_posts()) {
-      while($query->have_posts()) : $query->the_post();
+    if($query_more->have_posts()) {
+      while($query_more->have_posts()) : $query_more->the_post();
         $response .= get_template_part('template-parts/post/publication');
       endwhile;
     } else {
@@ -63,5 +63,58 @@ function nathalie_motta_load_more() {
   }
   add_action('wp_ajax_weichie_load_more', 'nathalie_motta_load_more');
   add_action('wp_ajax_nopriv_weichie_load_more', 'nathalie_motta_load_more');
+
+
+
+// Génération de l'affichage de la lightbox
+function nathalie_motta_lightbox() { 
+  // Récupération des données pour le filtre
+  $categorie_id = $_POST['categorie'];
+  $format_id = $_POST['format'];
+  $orderby = $_POST['orderby'];
+  $order = $_POST['order'];
+  $paged = $_POST['paged'];
+  $photo_id = $_POST['photoId'];
+
+  // Configuration du filtre
+$query_lightbox = new WP_Query([
+  'post_type' => 'photo',
+  'posts_per_page' => -1,
+  // 'posts_per_page' => get_option( 'posts_per_page'), // Valeur par défaut
+  'orderby' => $orderby,
+  'order' => $order,
+  'paged' => $paged, 
+  'Id' => $photo_id,
+  'meta_query'    => array(
+      'relation'      => 'AND', 
+      array(
+          'key'       => 'categorie-acf',
+          'compare'   => 'LIKE', 
+          'value'     =>  $categorie_id,
+      ),
+      array(
+          'key'       => 'format-acf',
+          'compare'   => 'LIKE',
+          'value'     => $format_id,
+      )
+    ),
+  'nopaging' => true,
+]);
+ 
+$response = '';
+
+if($query_lightbox->have_posts()) {
+  while($query_lightbox->have_posts()) : $query_lightbox->the_post();
+    $response .= get_template_part('template-parts/modal/lightbox');
+  endwhile;
+} else {
+  $response = '';
+
+}
+
+exit;
+}
+add_action('wp_ajax_weichie_load_more', 'nathalie_motta_lightbox');
+add_action('wp_ajax_nopriv_weichie_load_more', 'nathalie_motta_lightbox');
 
 ?>

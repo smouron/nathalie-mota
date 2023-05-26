@@ -43,6 +43,7 @@
         // Récupérer la taxonomie actuelle
         $term = get_queried_object();
         $term_id  = my_acf_load_value('ID', $term);
+        $count = 0;
 
         // $categorie_id  =  get_post_meta( get_the_ID(), 'categorie-acf', true );
         // $format_id  =  get_post_meta( get_the_ID(), 'format-acf', true );
@@ -50,7 +51,8 @@
         // $format_name = my_acf_load_value('name', get_field('format-acf'));
         $custom_args = array(
         'post_type' => 'photo',
-        //   'posts_per_page' => 8,
+        // 'posts_per_page' => -1,
+        // 'posts_per_page' => 8,
         'posts_per_page' => get_option( 'posts_per_page'), // Valeur par défaut
         'order' => $order, // ASC ou DESC 
         'orderby' =>  $orderby, // 'date' , 'meta_value_num'
@@ -68,10 +70,12 @@
                 'value'     => $format_id,
             )
             ),
-        // 'nopaging' => false,
+        // 'nopaging' => true,
             );            
             //On crée ensuite une instance de requête WP_Query basée sur les critères placés dans la variables $args
-            $query = new WP_Query( $custom_args );           
+            $query = new WP_Query( $custom_args );  
+
+            $my_posts = get_posts( $custom_args );
             
             // echo $query->found_posts . " articles trouvés"; 
             $max_pages = $query->max_num_pages;
@@ -81,7 +85,8 @@
             <?php if($query->have_posts()) : ?>
                 <article class="publication-list container-news flexrow">
                     <!-- On parcourt chacun des articles résultant de la requête -->
-                    <?php while($query->have_posts()) : $query->the_post();                    
+                    <?php while($query->have_posts()) : $query->the_post(); 
+                            $count++;                
                             get_template_part('template-parts/post/publication');
                         endwhile; 
                     ?>
@@ -101,12 +106,13 @@
             <!-- afficher le système de pagination (s’il existe de nombreux articles) -->
             <!-- <h3>Articles suivants</h3> -->
             <?php if ($max_pages > 1): ?>
-            <a href="#" class="btn_load-more" id="load-more">Charger plus</a>
-            <span class="camera"></span>
+                <a href="#" class="btn_load-more" id="load-more">Charger plus</a>
+                <span class="camera"></span>
             <?php endif ?>
         </div>
 
       </section>
+      
         <!-- Variables pour être récupérées par JavaScript -->
         <form>
             <input type="hidden" id="categorie_id" value="<?php echo $categorie_id; ?>">
@@ -121,3 +127,14 @@
       </aside> -->
   </div>
 <?php get_footer(); ?>
+
+<?php 
+    // print_r($my_posts); 
+    // echo('<br><br>') 
+    // print_r($my_posts[1]); 
+    // echo('<br><br>') 
+    // print_r($my_posts[1]->post_title); 
+    // echo('<br><br>') 
+    // echo(count($my_posts). " / ". $count)
+    // echo('<br><br>')
+ ?>

@@ -1,10 +1,7 @@
 // Gestion de l'affichage des photos supplémentaires en page d'accueil
 // en fonction de la valeur des filtres
 
-if (!currentPage) {
-  let currentPage = 1;
-}
-
+let currentPage = 1;
 // Récupération des variables de PHP
 let categorieId = document.getElementById("categorie_id").value;
 let formatId = document.getElementById("format_id").value;
@@ -18,17 +15,16 @@ if (document.getElementById("orderby") !== null) {
 }
 let max_pages = 1;
 if (document.getElementById("max_pages") !== null) {
-  max_pages = document.getElementById("max_pages").valu;
+  max_pages = document.getElementById("max_pages").value;
 }
 
-// Gestion de la pagination des photos
+
 (function ($) {
   $(document).ready(function () {
-    // Gestion du bouton pour voir plus de photos
+    // Gestion de la pagination des photos enpage d'accueil
     $("#load-more").click(function (e) {
       // e.preventDefault();
       currentPage++; // Do currentPage + 1, because we want to load the next page
-      // console.log("max_page: " + max_pages + " - currentPage: " + currentPage);
 
       if (currentPage >= max_pages) {
         $("#load-more").addClass("hidden");
@@ -51,5 +47,7 @@ if (document.getElementById("max_pages") !== null) {
         },
       });
     });
+
+    // Gestion de la lightbox
   });
 })(jQuery);
