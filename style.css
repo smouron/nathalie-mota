@@ -22,7 +22,6 @@ body {
     font-family: 'Space Mono', monospace;     
     margin: auto; 
     width: 100vw;
-    /* width: 80vw; */
     /* max-width: 1440px; */
 }
 
@@ -52,12 +51,12 @@ ul li {
     align-items: center;  
     justify-content: center;
     margin: auto;
+    z-index: 100;
 }
 
 #header {
     position: sticky;
     top:0;
-    z-index: 99;
     height: 80px;
     width: 100vw;
     -webkit-box-shadow: 0px 11px 12px -7px rgba(126, 126, 126, 0.226); 
@@ -65,12 +64,14 @@ ul li {
 }
 
 .container-header {
+    position: relative; 
     display: flex;
     width: 100vw; 
-    height: 80px;
+    height: 100%;
     max-width: 1440px;   
     justify-content: space-between;
     align-items: center; 
+    z-index: 30;
 }
 
 .container-header img {
@@ -109,7 +110,6 @@ ul li {
 }
 
 #navigation {
-    position: relative; 
     display: flex;
     justify-content: space-between;
     align-content: center;
@@ -180,11 +180,9 @@ ul li {
     position: absolute;
     right: 0;
     opacity: 0;
-    top: 40px;
+    top: 70px;
     width: 0;
-    min-height: 100vh;
     background: #E00000;
-    z-index: 10;
     transition: all .3s ease-in-out;
 }
 
@@ -196,23 +194,31 @@ ul li {
     align-content: center;
 }
 
-.animate-modal {
-    opacity: 1;
-    height: auto;
-    top: 40px;
-    width: 100vw;
-    z-index: 20;
+#modal__content .menu-header-menu-container {
+    margin: auto;
+    height: 100vh;
+    max-width: 1000px;
 }
 
-#modal__content li {
-    /* height: 40px; */
-    padding: 40px !important;
+#modal__content .menu-header-menu-container ul {        
+    height: 90%;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    justify-content: space-around;
+    /* justify-content: center; */
+    padding: 20px
 }
 
 #modal__content a {
     color: white;
     font-size: 23px;
 }
+
+.animate-modal {
+    opacity: 1;
+    width: 100vw;
+}
+
 
 #footer ul li {
     padding: 0 40px; 
@@ -639,9 +645,33 @@ justify-content: space-between;
         height: 0;
     }
 
+    #modal__content .menu-header-menu-container {
+        opacity: 1;
+    }
+    
+    #modal__content .menu-header-menu-container ul {        
+        height: 90%;
+        flex-direction: column;
+        /* justify-content: space-between; */
+        justify-content: space-around;
+        /* justify-content: center; */
+        padding: 20px
+    }
+
+    #modal__content .menu-header-menu-container a{
+        display: inline-block;
+        transform: translateY(0);
+        height: 0;
+    }
+    
     #modal__burger {
         opacity: 1;
         top: 0;
+    }
+
+    #navigation .menu-header-menu-container,
+    #navigation #modal__burger {
+        margin-right: 0;
     }
     
     .hero-area img {   
@@ -710,4 +740,5 @@ justify-content: space-between;
         max-height: 260px;
         height: auto;
     } 
+
 }
