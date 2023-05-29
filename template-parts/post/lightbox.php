@@ -19,7 +19,7 @@
         <button class="lightbox__prev">Précédent</button>
         <div class="lightbox__container_info flexcolumn">
             <?php the_post_thumbnail(); ?>
-            <h2><?php the_title(); ?></h2>
+            <h2><?php the_id(); ?> - <?php the_title(); ?></h2>
             <div class="lightbox__info flexrow">
                 <p><?php echo $categorie; ?></p>
                 <p><?php echo the_time( 'Y' ); ?></p>

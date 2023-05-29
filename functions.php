@@ -20,7 +20,7 @@ function nathalie_motta_theme_enqueue() {
     // Chargement des script JS personnalisés
     wp_enqueue_script( 'nathalie-motta-scripts', get_theme_file_uri( '/assets/js/scripts.js' ), array('jquery'), '1.0.1', true );    
     wp_enqueue_script( 'nathalie-motta-scripts-filtres', get_theme_file_uri( '/assets/js/filtres.js' ), array(), '1.0.0', true );   
-    wp_enqueue_script( 'nathalie-motta-scripts-lightbox', get_theme_file_uri( '/assets/js/lightbox.js' ), array(), '1.0.0', true );
+    wp_enqueue_script( 'nathalie-motta-scripts-lightbox', get_theme_file_uri( '/assets/js/lightbox.js' ), array('jquery'), '1.0.0', true );
 
     if (is_front_page()) {
         wp_enqueue_script( 'nathalie-motta-scripts-publication-ajax', get_theme_file_uri( '/assets/js/publication-ajax.js' ), array(), '1.0.0', true );

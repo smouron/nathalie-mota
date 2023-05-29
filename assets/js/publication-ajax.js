@@ -3,6 +3,7 @@
 
 let currentPage = 1;
 // Récupération des variables de PHP
+
 let categorieId = document.getElementById("categorie_id").value;
 let formatId = document.getElementById("format_id").value;
 let order = "";
@@ -18,12 +19,11 @@ if (document.getElementById("max_pages") !== null) {
   max_pages = document.getElementById("max_pages").value;
 }
 
-
 (function ($) {
   $(document).ready(function () {
-    // Gestion de la pagination des photos enpage d'accueil
+    // Gestion de la pagination des photos en page d'accueil
     $("#load-more").click(function (e) {
-      // e.preventDefault();
+      e.preventDefault();
       currentPage++; // Do currentPage + 1, because we want to load the next page
 
       if (currentPage >= max_pages) {
@@ -35,7 +35,7 @@ if (document.getElementById("max_pages") !== null) {
         url: "/nathalie-motta/wp-admin/admin-ajax.php",
         dataType: "html", // <-- Change dataType from 'html' to 'json'
         data: {
-          action: "weichie_load_more",
+          action: "nathalie_motta_load_more",
           paged: currentPage,
           categorie: categorieId,
           format: formatId,

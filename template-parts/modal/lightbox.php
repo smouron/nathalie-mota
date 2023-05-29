@@ -13,6 +13,11 @@
  $categorie  = my_acf_load_value('name', get_field('categorie-acf'));
 ?>
 <div class="lightbox hidden">
+    
+</div>
+
+
+<!-- <div class="lightbox hidden">
     <button class="lightbox__close">Fermer</button>
     <div class="lightbox__container">
         <button class="lightbox__next">Suivant</button>
@@ -26,4 +31,4 @@
             </div>
         </div>
     </div> 
-</div> 
+</div>  -->

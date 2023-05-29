@@ -51,7 +51,6 @@
         // $format_name = my_acf_load_value('name', get_field('format-acf'));
         $custom_args = array(
         'post_type' => 'photo',
-        // 'posts_per_page' => -1,
         // 'posts_per_page' => 8,
         'posts_per_page' => get_option( 'posts_per_page'), // Valeur par défaut
         'order' => $order, // ASC ou DESC 
@@ -70,12 +69,17 @@
                 'value'     => $format_id,
             )
             ),
-        // 'nopaging' => true,
+            'nopaging' => false,
             );            
             //On crée ensuite une instance de requête WP_Query basée sur les critères placés dans la variables $args
-            $query = new WP_Query( $custom_args );  
+            $query = new WP_Query( $custom_args ); 
+            
+            // Création du filtre pour la ligh pour créer un tableau 
+            // avec la liste de toutes les photos correspondant aux filtres
+            $custom_args2 = array_replace($custom_args, array( 'posts_per_page' => -1, 'nopaging' => true,));
 
-            $my_posts = get_posts( $custom_args );
+            $total_posts = get_posts( $custom_args2 );
+            $nb_total_posts = count($total_posts);
             
             // echo $query->found_posts . " articles trouvés"; 
             $max_pages = $query->max_num_pages;
@@ -106,25 +110,26 @@
             <!-- afficher le système de pagination (s’il existe de nombreux articles) -->
             <!-- <h3>Articles suivants</h3> -->
             <?php if ($max_pages > 1): ?>
-                <a href="#" class="btn_load-more" id="load-more">Charger plus</a>
+                <!-- Variables qui vont pourvoir être récupérées par JavaScript -->
+                <form>
+                    <input type="hidden" name="total_posts" id="total_posts" value="<?php print_r( $total_posts); ?>">
+                    <input type="hidden" name="nb_total_posts" id="nb_total_posts" value="<?php  echo $nb_total_posts; ?>">
+                    <input type="hidden" name="categorie_id" id="categorie_id" value="<?php echo $categorie_id; ?>">
+                    <input type="hidden" name="format_id" id="format_id" value="<?php echo $format_id; ?>">
+                    <input type="hidden" name="orderby" id="orderby" value="<?php echo $orderby; ?>">
+                    <input type="hidden" name="order" id="order" value="<?php echo $order; ?>">
+                    <input type="hidden" name="max_pages" id="max_pages" value="<?php echo $max_pages; ?>">
+                    <button class="btn_load-more" id="load-more">Charger plus</button>
+                </form>
+                
+                <!-- <a href="#" class="btn_load-more" id="load-more">Charger plus</a> -->
                 <span class="camera"></span>
             <?php endif ?>
         </div>
 
       </section>
       
-        <!-- Variables pour être récupérées par JavaScript -->
-        <form>
-            <input type="hidden" id="categorie_id" value="<?php echo $categorie_id; ?>">
-            <input type="hidden" id="format_id" value="<?php echo $format_id; ?>">
-            <input type="hidden" id="orderby" value="<?php echo $orderby; ?>">
-            <input type="hidden" id="order" value="<?php echo $order; ?>">
-            <input type="hidden" id="max_pages" value="<?php echo $max_pages; ?>">
-        </form>
 
-
-      <!-- <aside id="widget-area">
-      </aside> -->
   </div>
 <?php get_footer(); ?>
 
