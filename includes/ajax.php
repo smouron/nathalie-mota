@@ -69,60 +69,30 @@ function nathalie_motta_load_more() {
 // Génération de l'affichage de la lightbox
 function nathalie_motta_lightbox() {
 
-  echo ('nathalie_motta_lightbox');
- 	// Vérification de sécurité
- 	if( 
-    ! isset( $_REQUEST['nonce'] ) or 
-         ! wp_verify_nonce( $_REQUEST['nonce'], 'nathalie_motta_lightbox' ) 
-    ) {
-      wp_send_json_error( "Vous n’avez pas l’autorisation d’effectuer cette action.", 403 );
-    }
-
   // On vérifie que l'identifiant a bien été envoyé
-  if( ! isset( $_POST['postid'] ) ) {
-    wp_send_json_error( "L'identifiant de l'article est manquant.", 403 );
+  if( ! isset( $_POST['photo_id'] ) ) {
+    wp_send_json_error( "L'identifiant de la photo est manquant.", 403 );
   }
 
   // Récupération des données pour le filtre
-  $categorie_id = $_POST['categorie'];
-  $format_id = $_POST['format'];
-  $orderby = $_POST['orderby'];
-  $order = $_POST['order'];
-  $paged = $_POST['paged'];
-  $photo_id = intval($_POST['photoId']);
+  $photo_id = intval($_POST['photo_id']);
 
   // Configuration du filtre
-$query_lightbox = new WP_Query([
-  'post_type' => 'photo',
-  'posts_per_page' => -1,
-  'orderby' => $orderby,
-  'order' => $order,
-  'paged' => $paged, 
-  'Id' => $photo_id,
-  'meta_query'    => array(
-      'relation'      => 'AND', 
-      array(
-          'key'       => 'categorie-acf',
-          'compare'   => 'LIKE', 
-          'value'     =>  $categorie_id,
-      ),
-      array(
-          'key'       => 'format-acf',
-          'compare'   => 'LIKE',
-          'value'     => $format_id,
-      )
-    ),
-  'nopaging' => true,
-]);
+  $query_lightbox = new WP_Query([
+    'post_type' => 'photo',
+    'posts_per_page' => -1,
+  ]);
  
 $response = '';
 
 if($query_lightbox->have_posts()) {
   while($query_lightbox->have_posts()) : $query_lightbox->the_post();
-    $response .= get_template_part('template-parts/modal/lightbox');
+  if ( get_the_id() == $photo_id) {
+    $response = get_template_part('template-parts/modal/lightbox');
+  }
   endwhile;
 } else {
-  $response = 'ERROR';
+  $response = '';
 
 }
 

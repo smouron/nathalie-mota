@@ -43,7 +43,6 @@
         // Récupérer la taxonomie actuelle
         $term = get_queried_object();
         $term_id  = my_acf_load_value('ID', $term);
-        $count = 0;
 
         // $categorie_id  =  get_post_meta( get_the_ID(), 'categorie-acf', true );
         // $format_id  =  get_post_meta( get_the_ID(), 'format-acf', true );
@@ -89,12 +88,20 @@
             <?php if($query->have_posts()) : ?>
                 <article class="publication-list container-news flexrow">
                     <!-- On parcourt chacun des articles résultant de la requête -->
-                    <?php while($query->have_posts()) : $query->the_post(); 
-                            $count++;                
+                    <?php while($query->have_posts()) : $query->the_post();               
                             get_template_part('template-parts/post/publication');
                         endwhile; 
                     ?>
                 </article>
+                <div class="lightbox hidden" id="lightbox">    
+                    <button class="lightbox__close">Fermer</button>
+                    <div class="lightbox__container">
+                        <button class="lightbox__next">Suivant</button>
+                        <button class="lightbox__prev">Précédent</button>
+                        <div class="lightbox__container_info flexcolumn" id="lightbox__container_info">
+                        </div>
+                    </div> 
+                </div>
             <?php else : ?>
                 <p>Désolé. Aucun article ne correspond à cette requête.</p>          
             
@@ -109,7 +116,6 @@
         <div id="pagination">
             <!-- afficher le système de pagination (s’il existe de nombreux articles) -->
             <!-- <h3>Articles suivants</h3> -->
-            <?php if ($max_pages > 1): ?>
                 <!-- Variables qui vont pourvoir être récupérées par JavaScript -->
                 <form>
                     <input type="hidden" name="total_posts" id="total_posts" value="<?php print_r( $total_posts); ?>">
@@ -119,12 +125,14 @@
                     <input type="hidden" name="orderby" id="orderby" value="<?php echo $orderby; ?>">
                     <input type="hidden" name="order" id="order" value="<?php echo $order; ?>">
                     <input type="hidden" name="max_pages" id="max_pages" value="<?php echo $max_pages; ?>">
-                    <button class="btn_load-more" id="load-more">Charger plus</button>
+                    <!-- On cache le bouton s'il n'y a pas plus d'1 page -->
+                    <?php if ($max_pages > 1): ?>
+                        <button class="btn_load-more" id="load-more">Charger plus</button>
+                        <!-- <a href="#" class="btn_load-more" id="load-more">Charger plus</a> -->
+                        <span class="camera"></span>
+                    <?php endif ?>
                 </form>
                 
-                <!-- <a href="#" class="btn_load-more" id="load-more">Charger plus</a> -->
-                <span class="camera"></span>
-            <?php endif ?>
         </div>
 
       </section>
@@ -134,12 +142,6 @@
 <?php get_footer(); ?>
 
 <?php 
-    // print_r($my_posts); 
+    // print_r($total_posts); 
     // echo('<br><br>') 
-    // print_r($my_posts[1]); 
-    // echo('<br><br>') 
-    // print_r($my_posts[1]->post_title); 
-    // echo('<br><br>') 
-    // echo(count($my_posts). " / ". $count)
-    // echo('<br><br>')
  ?>
