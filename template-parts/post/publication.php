@@ -28,8 +28,8 @@
     <form>
         <input type="hidden" name="postid" class="postid" value="<?php the_id(); ?>">
         <button class="openLightbox"
-            data-postid="<?php echo get_the_id(); ?>"            
-            data-posttitle="<?php echo get_the_title(); ?>"  
+            data-postid="<?php echo get_the_id(); ?>"    
+            data-arrow="true" 
             data-nonce="<?php echo wp_create_nonce('nathalie_motta_lightbox'); ?>"
             data-action="nathalie_motta_lightbox"
             data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"

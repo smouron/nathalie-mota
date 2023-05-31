@@ -69,7 +69,7 @@
 }
 .photo__info--image  {
     position: relative;
-    margin: 0 5px;
+    padding: 0 10px;
 }
 
 .photo__info--image img {

@@ -13,7 +13,7 @@
  $categorie  = my_acf_load_value('name', get_field('categorie-acf'));
 
 ?>
-<?php the_post_thumbnail(); ?>    
+<?php the_post_thumbnail('large'); ?>    
 <h2 class="photo-title-<?php the_id(); ?>"><?php the_title(); ?></h2>
 <div class="lightbox__info flexrow">
     <p class="photo-category-<?php the_id(); ?>"><?php echo $categorie; ?></p>

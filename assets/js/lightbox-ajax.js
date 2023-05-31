@@ -5,10 +5,10 @@ console.log("Script lightbox lancé !!!");
 // photo en pleine page
 
 // Récupération des tous les icones Lightbox présent
-const listOpenLightbox = document.querySelectorAll(".openLightbox");
-const listLightbox = document.querySelectorAll(".lightbox");
-const listLightboxPrev = document.querySelectorAll(".lightbox__prev");
-const listLightboxNext = document.querySelectorAll(".lightbox__next");
+// const listOpenLightbox = document.querySelectorAll(".openLightbox");
+// const listLightbox = document.querySelectorAll(".lightbox");
+// const listLightboxPrev = document.querySelectorAll(".lightbox__prev");
+// const listLightboxNext = document.querySelectorAll(".lightbox__next");
 
 // Récupération du tableau de toutes les photos selon les filtres
 let total_posts = "";
@@ -79,12 +79,6 @@ function recupIdPhoto(arg) {
   console.log("Id Photo: " + idPhoto);
 }
 
-function changePhoto2() {
-  if (idPhoto != idPhotoNext) {
-    console.log("Le n° de la photo a changé");
-  }
-}
-
 (function ($) {
   $(document).ready(function () {
     // Gestion de la pagination de la lightbox
@@ -94,19 +88,46 @@ function changePhoto2() {
       // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
       const ajaxurl = $(this).data("ajaxurl");
 
-      idPhoto = $(this).data("postid");
+      // Récupération de la variable si on la reçoit
+      // si non initialisation par défaut à true
+      let arrow = "true";
+
+      if (!$(this).data("arrow")) {
+        arrow = $(this).data("arrow");
+      }
+
+      if (arrow) {
+        // Si on veut les fleches, on les affiche
+        $(".lightbox__next").removeClass("hidden");
+        $(".lightbox__prev").removeClass("hidden");
+      } else {
+        // Si on ne veut pas les fleches, on les retire
+        $(".lightbox__next").addClass("hidden");
+        $(".lightbox__prev").addClass("hidden");
+      }
+
+      if (!$(this).data("postid")) {
+        console.log(
+          "Identifiant manquant. Récupération du premier de la liste"
+        );
+        recupIdPhoto(0);
+      } else {
+        idPhoto = $(this).data("postid");
+      }
       recupIdData(idPhoto);
       console.log("n° " + idValue + " - id Photo: " + idPhoto);
 
       $(".lightbox").removeClass("hidden");
 
+      // On s'assure de le container est vide avant de chager le code
+      $("#lightbox__container_info").empty();
       $.changePhoto();
     });
 
     $(".lightbox__prev").click(function (e) {
       e.preventDefault();
       idPhotoNext = idPhoto;
-      console.log("Photo précédent");
+      console.log("Photo précédente");
       if (idValue > 0) {
         idValue--;
       } else {
@@ -141,7 +162,6 @@ function changePhoto2() {
           photo_id: idPhoto,
         },
         success: function (res) {
-          console.log(res);
           $("#lightbox__container_info").empty().append(res);
         },
       });
