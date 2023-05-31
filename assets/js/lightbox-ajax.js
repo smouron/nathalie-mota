@@ -4,12 +4,6 @@ console.log("Script lightbox lancé !!!");
 
 // photo en pleine page
 
-// Récupération des tous les icones Lightbox présent
-// const listOpenLightbox = document.querySelectorAll(".openLightbox");
-// const listLightbox = document.querySelectorAll(".lightbox");
-// const listLightboxPrev = document.querySelectorAll(".lightbox__prev");
-// const listLightboxNext = document.querySelectorAll(".lightbox__next");
-
 // Récupération du tableau de toutes les photos selon les filtres
 let total_posts = "";
 if (document.getElementById("total_posts") !== null) {
@@ -96,16 +90,6 @@ function recupIdPhoto(arg) {
         arrow = $(this).data("arrow");
       }
 
-      if (arrow) {
-        // Si on veut les fleches, on les affiche
-        $(".lightbox__next").removeClass("hidden");
-        $(".lightbox__prev").removeClass("hidden");
-      } else {
-        // Si on ne veut pas les fleches, on les retire
-        $(".lightbox__next").addClass("hidden");
-        $(".lightbox__prev").addClass("hidden");
-      }
-
       if (!$(this).data("postid")) {
         console.log(
           "Identifiant manquant. Récupération du premier de la liste"
@@ -174,6 +158,13 @@ function recupIdPhoto(arg) {
 
     // Affichage de la photo et des informations demandées
     $.changePhoto = function () {
+      // On affiche une image de chargement
+      $(".lightbox__loader").removeClass("hidden");
+      // On cache tout le reste en attendant le réponse
+      $("#lightbox__container_info").addClass("hidden");
+      $(".lightbox__next").addClass("hidden");
+      $(".lightbox__prev").addClass("hidden");
+
       $.ajax({
         type: "POST",
         url: "/nathalie-motta/wp-admin/admin-ajax.php",
@@ -183,7 +174,18 @@ function recupIdPhoto(arg) {
           photo_id: idPhoto,
         },
         success: function (res) {
+          // On a eu la réponse que c'est bon
+          // On retire l'image de chargement
           $("#lightbox__container_info").empty().append(res);
+          // On affiche les informations de la lightbox
+          $(".lightbox__loader").addClass("hidden");
+          $("#lightbox__container_info").removeClass("hidden");
+          // On affiche les flèches que si c'était demandé
+          if (arrow) {
+            // Si on veut les fleches, on les affiche
+            $(".lightbox__next").removeClass("hidden");
+            $(".lightbox__prev").removeClass("hidden");
+          }
         },
       });
     };

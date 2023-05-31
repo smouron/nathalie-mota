@@ -152,9 +152,23 @@
 /*  **********************************  */
 
 @media screen and (max-width: 959px) {
-    .container__photo {
+    .photo_detail {
+        padding-top: 0;
+    }
+    
+    .photo__info {
         display: flex;
         flex-direction: column-reverse;
+        gap: 20px;
+    }
+   
+    .photo__info--description,
+    .photo__info--image {
+        width: 100%;
+    }
+
+    .photo__info--image {
+        margin: 0 10px;
     }
     
     .photo__contact{
@@ -172,6 +186,11 @@
     .site__navigation {
         opacity: 0;
         display: none;
+    }
+
+    .container-common {
+        flex-direction: column;
+        gap: 20px;
     }
 
 }

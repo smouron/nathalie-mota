@@ -104,4 +104,10 @@ Theme URI: https://motaphoto.com
     align-items: left;
 }
 
-
+/* Gestion d'une image d'attente de chargement */
+.lightbox__loader {
+    width: 38px;
+    height: 38px;
+    opacity: .5;
+    background: url("../img/loader.svg") center center no-repeat;
+}
