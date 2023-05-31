@@ -39,6 +39,7 @@ let id = "";
 let idPhoto = null;
 let idPhotoNext = null;
 let idValue = 10;
+let arrow = "true";
 
 function recupArrayPhp() {
   // Récupérarion des données qui sont en texte et transfert dans un tableau javascript
@@ -90,7 +91,6 @@ function recupIdPhoto(arg) {
 
       // Récupération de la variable si on la reçoit
       // si non initialisation par défaut à true
-      let arrow = "true";
 
       if (!$(this).data("arrow")) {
         arrow = $(this).data("arrow");
@@ -124,6 +124,7 @@ function recupIdPhoto(arg) {
       $.changePhoto();
     });
 
+    // Affichage de la photo prédécente
     $(".lightbox__prev").click(function (e) {
       e.preventDefault();
       idPhotoNext = idPhoto;
@@ -133,11 +134,12 @@ function recupIdPhoto(arg) {
       } else {
         idValue = nb_total_posts - 1;
       }
-      console.log("id: " + idValue);
+      console.log("id: " + idValue + " - Arrow: " + arrow);
       recupIdPhoto(idValue);
       $.changePhoto();
     });
 
+    // Affichage de la photo suivante
     $(".lightbox__next").click(function (e) {
       e.preventDefault();
       idPhotoNext = idPhoto;
@@ -147,11 +149,30 @@ function recupIdPhoto(arg) {
       } else {
         idValue = 0;
       }
-      console.log("id: " + idValue);
+      console.log("id: " + idValue + " - Arrow: " + arrow);
       recupIdPhoto(idValue);
       $.changePhoto();
     });
 
+    // Refermer la lightbox au click sur la croix
+    $(".lightbox__close").click(function (e) {
+      e.preventDefault();
+      $.close();
+    });
+
+    /**
+     * Récupération des évenments au clavier
+     * @param {KeyboardEvent} e     */
+
+    $("body").keyup(function (e) {
+      e.preventDefault();
+      // Refermer la lightbox en faisant echap au clavier
+      if (e.key === "Escape") {
+        $.close();
+      }
+    });
+
+    // Affichage de la photo et des informations demandées
     $.changePhoto = function () {
       $.ajax({
         type: "POST",
@@ -167,11 +188,8 @@ function recupIdPhoto(arg) {
       });
     };
 
-    // si on click sur la croix, cela referme la lightbox
-    $(".lightbox__close").click(function (e) {
-      console.log(e);
-      e.preventDefault();
+    $.close = function () {
       $(".lightbox").addClass("hidden");
-    });
+    };
   });
 })(jQuery);

@@ -69,7 +69,6 @@
 }
 .photo__info--image  {
     position: relative;
-    padding: 0 10px;
 }
 
 .photo__info--image img {
@@ -146,4 +145,33 @@
     width: 241px;
     padding: 6px;
     transition: all 1s ease-in-out;
+}
+
+/*  **********************************  */
+/*    Media query : max-width: 959px    */
+/*  **********************************  */
+
+@media screen and (max-width: 959px) {
+    .container__photo {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    
+    .photo__contact{
+        justify-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .photo__contact p {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .site__navigation {
+        opacity: 0;
+        display: none;
+    }
+
 }
