@@ -181,7 +181,8 @@ ul li {
     top: 70px;
     width: 100vw;
     height: 0;
-    background: #E00000;
+    background: #E00000; 
+    visibility: hidden;
     transition: all .3s ease-in-out;
 }
 
@@ -224,7 +225,7 @@ ul li {
 /* Pour faire apparaitre la moadle en descendant et avec agmentatation de l'opacité */
 @keyframes move-down {
     0% {
-      transform: translateY(-300px);
+      transform: translateY(-400px);
       opacity: 0;
     }  
     100% {
@@ -395,27 +396,36 @@ button, input[type="submit"] {
 
 /* FILTRES */
 form {    
-    gap: 20px;
     flex-wrap: nowrap;
 }
 
 .filter-area {
     width: 80%;
     min-width: 125px;
+    max-width: 1440px;
     margin: auto;
-    padding: 30px 20px;
+    padding: 20px 20px 0;
     overflow: hidden;
 }
 
 .filter-area form {
-justify-content: space-between;   
-}
-
-
+    justify-content: space-between; 
+    height: 80px;
+}    
+    
 .filter-area .filterleft {
     gap: 20px;
-    justify-content: center;   
+    width: 560px !important; 
 }
+    
+.filter-area .filterright  {
+    width: 290px !important;
+} 
+    
+.filter-area .filterleft,
+.filter-area .filterright  {
+    justify-content: center;
+} 
 
 .filter-area p,
 .filter-area option {    
@@ -432,8 +442,13 @@ justify-content: space-between;
     text-transform: capitalize;
 }
 
+.filter-area select,
+.filter-area #date {
+    height: 40px !important;
+}
+
 .filter-area .select-filter {
-    width: 275px;
+    width: 270px;
     position: relative;
     display: inline-block;
 }
@@ -602,14 +617,17 @@ justify-content: space-between;
         width: 465px;
         height: 400px;
     }
-    
+
+    .filter-area {
+        width: 100%;
+    }    
 }
 
 /*  **********************************  */
-/*    Media query : max-width: 959px    */
+/*    Media query : max-width: 1023px    */
 /*  **********************************  */
 
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 1023px) {
     #wrap {
         width: 100%; 
         flex-direction: column; 
@@ -637,13 +655,14 @@ justify-content: space-between;
         width: 365px;
         height: 300px;
     }    
+
 }
 
 
 /*  **********************************  */
-/*    Media query : max-width: 780px    */
+/*    Media query : max-width: 768px    */
 /*  **********************************  */
-@media all and (max-width: 780px) {
+@media all and (max-width: 768px) {
     .container-header img {
     width: 138px;
     }
@@ -715,10 +734,15 @@ justify-content: space-between;
         height: 260px;
     }  
 
+}
+
+
+/*  **********************************  */
+/*    Media query : max-width: 580px    */
+/*  **********************************  */
+@media all and (max-width: 580px) {
     .filter-area {
-        width: 100%;
-        margin: auto;
-        padding: 30px 20px;
+        width: 180%;
     }
 }
 
@@ -741,5 +765,6 @@ justify-content: space-between;
         max-height: 260px;
         height: auto;
     } 
+
 
 }

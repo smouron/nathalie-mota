@@ -35,3 +35,4 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 24 - Mise en place du passage automatique du menu classique au menu hambuger en fonction de la largeur
 25 - Création du menu pour mobile
 26 - Mise en place de la gestion des flèches photo précédente et photo suivante + affichage des informations demandées (nom, années et catégorie)
+27 - Mise en place du scrolling horizontal des filtres avec l'aide de Swiper
