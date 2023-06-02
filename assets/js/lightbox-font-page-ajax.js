@@ -80,35 +80,60 @@ function recupIdPhoto(arg) {
 (function ($) {
   $(document).ready(function () {
     // Gestion de la pagination de la lightbox
-    $(".openLightbox").click(function (e) {
+    $(".publication-list").click(function (e) {
       e.preventDefault();
+      // Récupération des élements du DOM enfants
+      // console.log(e.currentTarget);
+      // console.log(e.target.className);
 
-      // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
-      const ajaxurl = $(this).data("ajaxurl");
-
-      // Récupération de la variable si on la reçoit
-      // si non initialisation par défaut à true
-
-      if (!$(this).data("arrow")) {
-        arrow = $(this).data("arrow");
+      // On recherche si c'est une class detail-photo
+      if (e.target.className === "detail-photo") {
+        // Si on est bien sur un élément avec la class
+        // on récupère l'adresse email lié à cet élément pour ouvrir ce lien
+        // console.log(e.target.parentElement);
+        window.location.href = e.target.parentElement.getAttribute("href");
       }
 
-      if (!$(this).data("postid")) {
-        console.log(
-          "Identifiant manquant. Récupération du premier de la liste"
-        );
-        recupIdPhoto(0);
-      } else {
-        idPhoto = $(this).data("postid");
+      // Et recherche si c'est une class openLightbox
+      if (e.target.className === "openLightbox") {
+        // Si c'est bien un élément avec la class openLightbox
+        // On récupère les élements complémentaires lier à cet élément
+        if (!$(e.target).data("arrow")) {
+          arrow = $(e.target).data("arrow");
+        }
+
+        if (!$(e.target).data("postid")) {
+          console.log(
+            "Identifiant manquant. Récupération du premier de la liste"
+          );
+          recupIdPhoto(0);
+        } else {
+          idPhoto = $(e.target).data("postid");
+        }
+        recupIdData(idPhoto);
+        console.log("n° " + idValue + " - id Photo: " + idPhoto);
+
+        $(".lightbox").removeClass("hidden");
+
+        // On s'assure de le container est vide avant de chager le code
+        $("#lightbox__container_info").empty();
+        $.changePhoto();
+
+        // Affichage de la photo prédécente
+        $(".lightbox__prev").click(function (e) {
+          e.preventDefault();
+          idPhotoNext = idPhoto;
+          console.log("Photo précédente");
+          if (idValue > 0) {
+            idValue--;
+          } else {
+            idValue = nb_total_posts - 1;
+          }
+          console.log("id: " + idValue + " - Arrow: " + arrow);
+          recupIdPhoto(idValue);
+          $.changePhoto();
+        });
       }
-      recupIdData(idPhoto);
-      console.log("n° " + idValue + " - id Photo: " + idPhoto);
-
-      $(".lightbox").removeClass("hidden");
-
-      // On s'assure de le container est vide avant de chager le code
-      $("#lightbox__container_info").empty();
-      $.changePhoto();
     });
 
     // Affichage de la photo prédécente
@@ -198,29 +223,3 @@ function recupIdPhoto(arg) {
     };
   });
 })(jQuery);
-
-if (document.querySelector(".publication-list")) {
-  setInterval(controlPublication, 500);
-
-  let nbPublicationOld = 0;
-
-  function controlPublication() {
-    let nbPublication = document.querySelector(".publication-list")
-      .childElementCount;
-    if (nbPublication != nbPublicationOld) {
-      console.log("Le nombre de photos a changé : " + nbPublication);
-
-      console.log(
-        "nb_total_posts: " +
-          nb_total_posts +
-          " - max_pages: " +
-          max_pages +
-          " - Photo par page: " +
-          posts_per_pag
-      );
-      nbPublicationOld = nbPublication;
-      const test = document.querySelector(".publication-list");
-      console.log(test);
-    }
-  }
-}

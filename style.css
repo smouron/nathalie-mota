@@ -734,6 +734,13 @@ form {
         height: 260px;
     }  
 
+    .news-info h2,
+    .news-info h3,
+    .news-info p {      
+        font-size: 12px !important;
+        line-height: 18px;  
+    }
+
 }
 
 
@@ -743,6 +750,13 @@ form {
 @media all and (max-width: 580px) {
     .filter-area {
         width: 180%;
+    }
+
+    .news-info h2,
+    .news-info h3,
+    .news-info p {      
+        font-size: 10px !important;
+        line-height: 14px !important;  
     }
 }
 
@@ -754,6 +768,13 @@ form {
     .hero-area img {   
         max-height: 300px;
     }   
+    
+    .news-info h2,
+    .news-info h3,
+    .news-info p {      
+        font-size: 8px !important;
+        line-height: 10px !important;  
+    }
 
     .hero-area .title-hero {
         font-size: 30px;

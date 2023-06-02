@@ -94,10 +94,10 @@
                     ?>
                 </article>
                 <div class="lightbox hidden" id="lightbox">    
-                    <button class="lightbox__close">Fermer</button>
+                    <button class="lightbox__close" title="Refermer cet agrandissement">Fermer</button>
                     <div class="lightbox__container">
-                        <button class="lightbox__next">Suivant</button>
-                        <button class="lightbox__prev">Précédent</button>                    
+                        <button class="lightbox__next" title="Photo suivante">Suivant</button>
+                        <button class="lightbox__prev" title="Photo précédente">Précédent</button>                    
                         <div class="lightbox__loader hidden"></div>
                         <div class="lightbox__container_info flexcolumn" id="lightbox__container_info">
                         </div>
@@ -126,6 +126,7 @@
                 <input type="hidden" name="orderby" id="orderby" value="<?php echo $orderby; ?>">
                 <input type="hidden" name="order" id="order" value="<?php echo $order; ?>">
                 <input type="hidden" name="max_pages" id="max_pages" value="<?php echo $max_pages; ?>">
+                <input type="hidden" name="posts_per_page" id="posts_per_page" value="<?php echo get_option( 'posts_per_page'); ?>">
                 <!-- On cache le bouton s'il n'y a pas plus d'1 page -->
                 <?php if ($max_pages > 1): ?>
                     <button class="btn_load-more" id="load-more">Charger plus</button>

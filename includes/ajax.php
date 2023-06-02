@@ -1,6 +1,9 @@
 <?php
 // WordPress a donc défini lui même quels étaient les paramètres de sa WP Query
-// pour connaitre la valeur de ces paramètres
+
+/**
+*  pour connaitre la valeur de ces paramètres
+*/
 function capitaine_override_query( $wp_query ) {
     echo('query_vars: ');
     var_dump( $wp_query->query_vars );
@@ -16,7 +19,9 @@ function capitaine_override_query( $wp_query ) {
   }
 // add_action( 'pre_get_posts', 'capitaine_override_query' );
 
-// Génération de l'affichage de la suite des photos
+/**
+*  Génération de l'affichage de la suite des photos
+*/ 
 function nathalie_motta_load_more() { 
   // Récupération des données pour le filtre
   $categorie_id = $_POST['categorie'];
@@ -65,8 +70,9 @@ function nathalie_motta_load_more() {
   add_action('wp_ajax_nopriv_nathalie_motta_load_more', 'nathalie_motta_load_more');
 
 
-
-// Génération de l'affichage de la lightbox
+/**
+*  Génération de l'affichage de la lightbox
+*/ 
 function nathalie_motta_lightbox() {
 
   // On vérifie que l'identifiant a bien été envoyé
@@ -77,6 +83,7 @@ function nathalie_motta_lightbox() {
   // Récupération des données pour le filtre
   $photo_id = intval($_POST['photo_id']);
 
+  
   // Configuration du filtre
   $query_lightbox = new WP_Query([
     'post_type' => 'photo',
