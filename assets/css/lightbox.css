@@ -10,7 +10,7 @@ Theme URI: https://motaphoto.com
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 999;
+    z-index: 100;
     background-color: rgba(0, 0, 0, 0.80);
     color: #FFFFFF;
     transition: all .3s ease-in-out;
@@ -19,7 +19,7 @@ Theme URI: https://motaphoto.com
 .lightbox__close,
 .lightbox__prev,
 .lightbox__next {    
-    position: relative;
+    position: absolute;
     border: none;
     /* text-indent : on cache le texte des boutons */
     text-indent: -3000px;
@@ -38,7 +38,6 @@ Theme URI: https://motaphoto.com
 .lightbox__next {
     width: 25px;
     height: 100%;
-    position: fixed;
     top: 0;
     margin-top: -4px;
     z-index: 11;
@@ -56,32 +55,44 @@ Theme URI: https://motaphoto.com
 
 .lightbox__prev {
     background: url("../img/prev_white.svg") center center / 100% 100% no-repeat;
-    left: -30px;
+    left: 20px;
 }
 
 .lightbox__next {
     background: url("../img/next_white.svg") center center / 100% 100% no-repeat;
-    right: -30px;
+    right: 20px;
 }
 
 .lightbox .lightbox__container {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);    
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;   
 }
 
-.lightbox__container_info{
+.lightbox__container_info,
+.lightbox__container_content {
+    position: relative;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+}
+
+.lightbox .lightbox__container a {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    object-fit: contain;
 }
 
 .lightbox .lightbox__container img {   
     object-fit: contain;
     width: 100%;
     height: auto;
-    /* max-width: 80%; */
-    max-height: 80%;
+    max-width: 80%;
+    max-height: 70%;
 }
 
 .lightbox__info {
@@ -119,19 +130,6 @@ Theme URI: https://motaphoto.com
     background: url("../img/loader.svg") center center no-repeat;
 }
 
-
-/*  **********************************  */
-/*    Media query : max-width: 768px    */
-/*  **********************************  */
-@media all and (max-width: 768px) {
-    .lightbox .lightbox__container {
-        width: 90%;
-        height: 90vh;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-    }
-}
 
 /*  **********************************  */
 /*    Media query : max-width: 580px    */

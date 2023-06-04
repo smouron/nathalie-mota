@@ -24,18 +24,18 @@ function nathalie_motta_theme_enqueue() {
     // wp_enqueue_script( 'swiper-element-bundle.min', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js', array(), '9.2.0', true );
     wp_enqueue_script( 'swiper-element-bundle.min', get_theme_file_uri( '/assets/js/swiper-bundle.min.js'), array(), '9.2.0', true );
  
-
     // Chargement des script JS personnalisés
     wp_enqueue_script( 'nathalie-motta-scripts', get_theme_file_uri( '/assets/js/scripts.js' ), array('jquery'), '1.0.1', true );    
-    wp_enqueue_script( 'nathalie-motta-scripts-filtres', get_theme_file_uri( '/assets/js/filtres.js' ), array(), '1.0.0', true );   
-    // wp_enqueue_script( 'nathalie-motta-scripts-lightbox-ajax', get_theme_file_uri( '/assets/js/lightbox-ajax.js' ), array('jquery'), '1.0.0', true );
-
+    wp_enqueue_script( 'nathalie-motta-scripts-filtres', get_theme_file_uri( '/assets/js/filtres.js' ), array('jquery'), '1.0.1', true );   
+    
+    // Script JS chargé pour tout le monde sauf avec front_page 
     if (!is_front_page()) {
-        wp_enqueue_script( 'nathalie-motta-scripts-lightbox-ajax', get_theme_file_uri( '/assets/js/lightbox-ajax.js' ), array('jquery'), '1.0.0', true );
+        wp_enqueue_script( 'nathalie-motta-scripts-lightbox-ajax', get_theme_file_uri( '/assets/js/lightbox-ajax.js' ), array('jquery'), '1.0.3', true );
     };  
 
+    // Script JS disponnibles chargé uniquement avec front_page 
     if (is_front_page()) {
-        wp_enqueue_script( 'nathalie-motta-scripts-publication-ajax', get_theme_file_uri( '/assets/js/publication-ajax.js' ), array('jquery'), '1.0.0', true );
+        wp_enqueue_script( 'nathalie-motta-scripts-publication-ajax', get_theme_file_uri( '/assets/js/publication-ajax.js' ), array('jquery'), '1.0.1', true );
         wp_enqueue_script( 'nathalie-motta-scripts-lightbox-ajax', get_theme_file_uri( '/assets/js/lightbox-font-page-ajax.js' ), array('jquery'), '1.0.0', true );
     };   
 
@@ -75,7 +75,7 @@ function register_my_menu(){
  add_action('after_setup_theme', 'register_my_menu');
 
 // créer un pour la gestion des widgets dans l'administration
-// etl'activation des sidebars
+// et l'activation des sidebars
 // Visibles ensuite dans Apparence / Widgets (widgets_init)
 function nathalie_motta_widgets(){
     register_sidebar(

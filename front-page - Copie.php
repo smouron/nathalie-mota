@@ -11,21 +11,21 @@
         <!-- Chargement des filtres -->
         <?php get_template_part( 'template-parts/post/photo-filter' ); ?>
         
-        
+                
         <?php  
         // Récupération des paramètres de filtre dans l'url
-        if (isset($_POST["categorie_id"])) {
-            $categorie_id = $_POST["categorie_id"];
+        if (isset($_GET["categorie"])) {
+            $categorie_id = $_GET["categorie"];
         } else {
             $categorie_id = "";
         }; 
-        if (isset($_POST["format_id"])) {
-            $format_id = $_POST["format_id"];
+        if (isset($_GET["format"])) {
+            $format_id = $_GET["format"];
         } else {
             $format_id = "";
         };  
-        if (isset($_POST["date"])) {
-            $order = $_POST["date"];
+        if (isset($_GET["date"])) {
+            $order = $_GET["date"];
         } else {
             $order = "";
         }; 
@@ -36,7 +36,7 @@
         } else {            
             $orderby = "date";
         } 
-         
+            
  
         // Initialisation du filtre d'affichage des posts
         $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
@@ -96,11 +96,10 @@
                 <div class="lightbox hidden" id="lightbox">    
                     <button class="lightbox__close" title="Refermer cet agrandissement">Fermer</button>
                     <div class="lightbox__container">
+                        <button class="lightbox__next" title="Photo suivante">Suivant</button>
+                        <button class="lightbox__prev" title="Photo précédente">Précédent</button>                    
                         <div class="lightbox__loader hidden"></div>
-                        <div class="lightbox__container_info flexcolumn" id="lightbox__container_info"> 
-                            <div class="lightbox__container_content flexcolumn" id="lightbox__container_content"></div>   
-                            <button class="lightbox__next" title="Photo suivante"></button>
-                            <button class="lightbox__prev" title="Photo précédente"></button>                     
+                        <div class="lightbox__container_info flexcolumn" id="lightbox__container_info">
                         </div>
                     </div> 
                 </div>
@@ -135,7 +134,14 @@
                 <?php endif ?>
             </form>                 
         </div>
-      </section>   
+
+      </section>
+      
 
   </div>
 <?php get_footer(); ?>
+
+<?php 
+    // print_r($total_posts); 
+    // echo('<br><br>') 
+ ?>

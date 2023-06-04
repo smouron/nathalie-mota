@@ -1,31 +1,14 @@
 <?php
-// WordPress a donc défini lui même quels étaient les paramètres de sa WP Query
+// Complément de fonction.php
+// Uniquement pour la partie des fonctions pour AJAX 
 
 /**
-*  pour connaitre la valeur de ces paramètres
-*/
-function capitaine_override_query( $wp_query ) {
-    echo('query_vars: ');
-    var_dump( $wp_query->query_vars );
-    echo('<br><br>');
-
-    echo('tax_query: ');
-    var_dump( $wp_query->tax_query );
-    echo('<br><br>');
-
-    echo('meta_query: ');
-    var_dump( $wp_query->meta_query );
-    echo('<br><br>');
-  }
-// add_action( 'pre_get_posts', 'capitaine_override_query' );
-
-/**
-*  Génération de l'affichage de la suite des photos
+*  Génération de l'affichage des photos
 */ 
-function nathalie_motta_load_more() { 
+function nathalie_motta_load() { 
   // Récupération des données pour le filtre
-  $categorie_id = $_POST['categorie'];
-  $format_id = $_POST['format'];
+  $categorie_id = $_POST['categorie_id'];
+  $format_id = $_POST['format_id'];
   $orderby = $_POST['orderby'];
   $order = $_POST['order'];
   $paged = intval($_POST['paged']);
@@ -52,22 +35,30 @@ function nathalie_motta_load_more() {
           )
         ),
     ]);
-     
+
+    // echo $query->found_posts . " articles trouvés"; 
+    $nb_total_posts = $query_more->found_posts;
+    $max_pages = $query_more->max_num_pages;
+
     $response = '';
   
     if($query_more->have_posts()) {
       while($query_more->have_posts()) : $query_more->the_post();
         $response .= get_template_part('template-parts/post/publication');
       endwhile;
+      echo("<form>
+          <input type='hidden' name='max_pages' id='max_pages' value='$max_pages'>
+      </form>");                
     } else {
-      $response = '';
-    
+      $response = ''; 
+      echo("<form>
+      <input type='hidden' name='max_pages' id='max_pages' value='$max_pages'>
+  </form>");    
     }
-
     exit;
   }
-  add_action('wp_ajax_nathalie_motta_load_more', 'nathalie_motta_load_more');
-  add_action('wp_ajax_nopriv_nathalie_motta_load_more', 'nathalie_motta_load_more');
+  add_action('wp_ajax_nathalie_motta_load', 'nathalie_motta_load');
+  add_action('wp_ajax_nopriv_nathalie_motta_load', 'nathalie_motta_load');
 
 
 /**
