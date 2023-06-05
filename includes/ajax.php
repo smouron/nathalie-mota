@@ -14,8 +14,8 @@ function nathalie_motta_load() {
   $paged = intval($_POST['paged']);
 
   // Configuration du filtre
-    $query_more = new WP_Query([
-      'post_type' => 'photo',
+  $custom_args = array(
+    'post_type' => 'photo',
         // 'posts_per_page' => 8,
       'posts_per_page' => get_option( 'posts_per_page'), // Valeur par défaut
       'orderby' => $orderby,
@@ -34,11 +34,14 @@ function nathalie_motta_load() {
               'value'     => $format_id,
           )
         ),
-    ]);
+        'nopaging' => false,
+        );  
+
+    $query_more = new WP_Query( $custom_args ); 
 
     // echo $query->found_posts . " articles trouvés"; 
     $nb_total_posts = $query_more->found_posts;
-    $max_pages = $query_more->max_num_pages;
+    $max_pages = $query_more->max_num_pages;   
 
     $response = '';
   
@@ -51,7 +54,7 @@ function nathalie_motta_load() {
       </form>");                
     } else {
       $response = ''; 
-      echo("<form>
+      echo("<form>  
       <input type='hidden' name='max_pages' id='max_pages' value='$max_pages'>
   </form>");    
     }

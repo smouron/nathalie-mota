@@ -83,8 +83,7 @@
                 >
                 </button>
             </form>
-        </div> 
-        
+        </div>         
     </div>
 </article>
 

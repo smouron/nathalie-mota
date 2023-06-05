@@ -36,3 +36,4 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 25 - Création du menu pour mobile
 26 - Mise en place de la gestion des flèches photo précédente et photo suivante + affichage des informations demandées (nom, années et catégorie)
 27 - Mise en place de la gestion du scrolling horizontal des filtres avec l'aide de Swiper
+28 - Modification de la gestion des filtres avec gestion par Ajax pour ne pas avoir la page qui se recharge à chaque fois
