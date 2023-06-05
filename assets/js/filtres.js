@@ -27,6 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentPage = 1;
   let max_pages = 1;
 
+  // Gestion du déplacement des filtres horizontalement
+  const swiper = new Swiper(".swiper-container", {
+    freeMode: true,
+    grabCursor: true,
+  });
+
   (function ($) {
     $(document).ready(function () {
       $(".option-filter").change(function (e) {
