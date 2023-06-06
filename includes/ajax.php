@@ -45,7 +45,6 @@ function nathalie_motta_load() {
     $max_pages = $query_more->max_num_pages;   
 
     $custom_args2 = array_replace($custom_args, array( 'posts_per_page' => -1, 'nopaging' => true,));
-
     $total_posts = get_posts( $custom_args2 );
     $nb_total_posts = count($total_posts);
 
@@ -53,10 +52,12 @@ function nathalie_motta_load() {
 
     if ($paged === 1) :
     ?>
-    <form> 
+    <form>  
+      <!-- Mise à disposition de JS du tableau contenant toutes les données de la requette et le nombre -->                 
       <input type="hidden" name="total_posts" id="total_posts" value="<?php print_r( $total_posts); ?>">     
       <input type='hidden' name='max_pages' id='max_pages' value='<?php echo $max_pages; ?>'>
-      <input type="hidden" name="nb_total_posts" id="nb_total_posts" value="<?php  echo $nb_total_posts; ?>">                
+      <input type="hidden" name="nb_total_posts" id="nb_total_posts" value="<?php  echo $nb_total_posts; ?>">
+       <!-- Mise à jour par ajax.php -->                                    
     </form>  
   
     <?php 

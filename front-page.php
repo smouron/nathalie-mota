@@ -30,12 +30,7 @@
             $order = "";
         }; 
 
-        if ($order === "") {
-            $orderby = "title";
-            $order = "ASC";
-        } else {            
-            $orderby = "date";
-        } 
+        $orderby = "date";
          
  
         // Initialisation du filtre d'affichage des posts
@@ -72,26 +67,23 @@
             );            
             //On crée ensuite une instance de requête WP_Query basée sur les critères placés dans la variables $args
             $query = new WP_Query( $custom_args ); 
-            
-            // Création du filtre pour la ligh pour créer un tableau 
-            // avec la liste de toutes les photos correspondant aux filtres
-            $custom_args2 = array_replace($custom_args, array( 'posts_per_page' => -1, 'nopaging' => true,));
-
-            $total_posts = get_posts( $custom_args2 );
-            $nb_total_posts = count($total_posts);
-            
-            // echo $query->found_posts . " articles trouvés"; 
             $max_pages = $query->max_num_pages;
+            
+            // Création du filtre pour la lightbox pour créer un tableau 
+            // avec la liste de toutes les photos correspondantes aux filtres
+            $custom_args2 = array_replace($custom_args, array( 'posts_per_page' => -1, 'nopaging' => true,));
+            $total_posts = get_posts( $custom_args2 );
+            $nb_total_posts = count($total_posts);          
                       
             ?>
             <!-- On vérifie si le résultat de la requête contient des articles -->
             <?php if($query->have_posts()) : ?>
                 <article class="publication-list container-news flexrow">
+                    <!-- Mise à disposition de JS du tableau contenant toutes les données de la requette et le nombre -->
                     <form> 
                         <input type="hidden" name="total_posts" id="total_posts" value="<?php print_r( $total_posts); ?>">     
                         <input type='hidden' name='max_pages' id='max_pages' value='<?php echo $max_pages; ?>'>
                         <input type="hidden" name="nb_total_posts" id="nb_total_posts" value="<?php  echo $nb_total_posts; ?>">
-                
                     </form> 
                     <!-- On parcourt chacun des articles résultant de la requête -->
                     <?php while($query->have_posts()) : $query->the_post();               
@@ -111,7 +103,7 @@
                     </div> 
                 </div>
             <?php else : ?>
-                <p>Désolé. Aucun article ne correspond à cette requête.</p>          
+                <p>Désolé. Aucun article ne correspond à cette demande.</p>          
             
             <?php endif; ?>
         
@@ -126,14 +118,12 @@
             <!-- <h3>Articles suivants</h3> -->
             <!-- Variables qui vont pourvoir être récupérées par JavaScript -->
             <form>
-                <!-- <input type="hidden" name="total_posts" id="total_posts" value="<?php print_r( $total_posts); ?>"> -->
-                <!-- <input type="hidden" name="nb_total_posts" id="nb_total_posts" value="<?php  echo $nb_total_posts; ?>"> -->
-                <input type="hidden" name="categorie_id" id="categorie_id" value="<?php echo $categorie_id; ?>">
+               <input type="hidden" name="categorie_id" id="categorie_id" value="<?php echo $categorie_id; ?>">
                 <input type="hidden" name="format_id" id="format_id" value="<?php echo $format_id; ?>">
                 <input type="hidden" name="orderby" id="orderby" value="<?php echo $orderby; ?>">
                 <input type="hidden" name="order" id="order" value="<?php echo $order; ?>">
-                <!-- <input type="hidden" name="max_pages" id="max_pages" value="<?php echo $max_pages; ?>"> -->
                 <input type="hidden" name="posts_per_page" id="posts_per_page" value="<?php echo get_option( 'posts_per_page'); ?>">
+                <input type="hidden" name="currentPage" id="currentPage" value="<?php  echo $paged; ?>">
                 <!-- On cache le bouton s'il n'y a pas plus d'1 page -->
                 <?php if ($max_pages > 1): ?>
                     <button class="btn_load-more" id="load-more">Charger plus</button>
