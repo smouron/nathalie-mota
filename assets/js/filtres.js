@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
           },
           success: function (res) {
             $(".publication-list").empty().append(res);
+            // console.log(res);
             // Récupération de la valeur du nouveau nombre de pages
             let max_pages = document.getElementById("max_pages").value;
             if (currentPage >= max_pages) {

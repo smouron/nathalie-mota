@@ -104,7 +104,7 @@
 
 /* Partie centrale - Contact + photos suivantes et précédentes */
 .photo__others {
-    padding: 80px 0 70px;
+    padding: 75px 0;
 }
 
 .site__navigation__prev,
@@ -126,8 +126,9 @@
 }
 
 .photo__contact {
-    padding: 45px 0 10px;
+    padding: 20px 0 10px;
     justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #000;
 }
 

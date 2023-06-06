@@ -39,7 +39,7 @@
          
  
         // Initialisation du filtre d'affichage des posts
-        $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+        $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
         // Récupérer la taxonomie actuelle
         $term = get_queried_object();
         $term_id  = my_acf_load_value('ID', $term);
@@ -82,11 +82,17 @@
             
             // echo $query->found_posts . " articles trouvés"; 
             $max_pages = $query->max_num_pages;
-                        
+                      
             ?>
             <!-- On vérifie si le résultat de la requête contient des articles -->
             <?php if($query->have_posts()) : ?>
                 <article class="publication-list container-news flexrow">
+                    <form> 
+                        <input type="hidden" name="total_posts" id="total_posts" value="<?php print_r( $total_posts); ?>">     
+                        <input type='hidden' name='max_pages' id='max_pages' value='<?php echo $max_pages; ?>'>
+                        <input type="hidden" name="nb_total_posts" id="nb_total_posts" value="<?php  echo $nb_total_posts; ?>">
+                
+                    </form> 
                     <!-- On parcourt chacun des articles résultant de la requête -->
                     <?php while($query->have_posts()) : $query->the_post();               
                             get_template_part('template-parts/post/publication');
@@ -120,13 +126,13 @@
             <!-- <h3>Articles suivants</h3> -->
             <!-- Variables qui vont pourvoir être récupérées par JavaScript -->
             <form>
-                <input type="hidden" name="total_posts" id="total_posts" value="<?php print_r( $total_posts); ?>">
-                <input type="hidden" name="nb_total_posts" id="nb_total_posts" value="<?php  echo $nb_total_posts; ?>">
+                <!-- <input type="hidden" name="total_posts" id="total_posts" value="<?php print_r( $total_posts); ?>"> -->
+                <!-- <input type="hidden" name="nb_total_posts" id="nb_total_posts" value="<?php  echo $nb_total_posts; ?>"> -->
                 <input type="hidden" name="categorie_id" id="categorie_id" value="<?php echo $categorie_id; ?>">
                 <input type="hidden" name="format_id" id="format_id" value="<?php echo $format_id; ?>">
                 <input type="hidden" name="orderby" id="orderby" value="<?php echo $orderby; ?>">
                 <input type="hidden" name="order" id="order" value="<?php echo $order; ?>">
-                <input type="hidden" name="max_pages" id="max_pages" value="<?php echo $max_pages; ?>">
+                <!-- <input type="hidden" name="max_pages" id="max_pages" value="<?php echo $max_pages; ?>"> -->
                 <input type="hidden" name="posts_per_page" id="posts_per_page" value="<?php echo get_option( 'posts_per_page'); ?>">
                 <!-- On cache le bouton s'il n'y a pas plus d'1 page -->
                 <?php if ($max_pages > 1): ?>
