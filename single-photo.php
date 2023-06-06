@@ -1,5 +1,11 @@
-<!-- Article de photo -->
 <?php
+/**
+ * The single : ATRICLE PHOTO 
+ *
+ * @package WordPress
+ * @subpackage nathalie-motta theme
+ */
+
 	get_header();
 ?>
 

@@ -69,7 +69,7 @@ ul li {
     display: flex;
     width: 100vw; 
     height: 100%;
-    max-width: 1440px;   
+    max-width: 1200px;   
     justify-content: space-between;
     align-items: center; 
     z-index: 30;
@@ -403,7 +403,7 @@ form {
 .filter-area {
     width: 80%;
     min-width: 125px;
-    max-width: 1440px;
+    max-width: 1150px;
     margin: auto;
     overflow: hidden;
 }
@@ -411,7 +411,7 @@ form {
 .filter-area form {
     justify-content: space-between; 
     height: 80px;
-    padding: 20px;
+    padding: 20px 0;
 }    
     
 .filter-area .filterleft {
@@ -420,7 +420,7 @@ form {
 }
     
 .filter-area .filterright  {
-    width: 290px !important;
+    width: 275px !important;
 } 
     
 .filter-area .filterleft,

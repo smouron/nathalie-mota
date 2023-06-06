@@ -5,7 +5,6 @@
  * @package WordPress
  * @subpackage nathalie-motta theme
  */
-// echo ('contact.php');
 ?>
 
 

@@ -1,6 +1,12 @@
 <?php
-// Complément de fonction.php
-// Uniquement pour la partie des fonctions pour AJAX 
+/**
+ * Complément de fonction.php
+ * fonctions pour AJAX 
+ *
+ * @package WordPress
+ * @subpackage nathalie-motta theme
+ */
+
 
 /**
 *  Génération de l'affichage des photos

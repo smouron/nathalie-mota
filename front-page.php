@@ -1,7 +1,12 @@
 <?php
-    get_header();
-    // echo ('front-page.php');
+/**
+ * The front-page : ACCUEIL 
+ *
+ * @package WordPress
+ * @subpackage nathalie-motta theme
+ */
 
+    get_header();
 ?>
   <div id="front-page"> 
       <section id="content">    
