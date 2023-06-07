@@ -69,10 +69,14 @@
 }
 
 .photo__info--image {
+    position: relative;
+    display: flex;
+    object-fit: contain;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     height: 100%;
     margin-left: 10px;
-    justify-content: center;
-    align-content: flex-end;
 }
 
 .photo__info--description {
@@ -84,15 +88,7 @@
     padding-bottom: 30px;
 }
 
-.photo__info--image  {
-    position: relative;
-}
-
 .photo__info--image img {
-    object-fit: contain;
-    /* Object-fit: cover; */
-    align-content: center;
-    text-align: center;
     width: 100%;    
     height: 100%;
     transition: all 0.5s ease-in-out;

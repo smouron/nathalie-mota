@@ -18,23 +18,10 @@
         
         
         <?php  
-        // Récupération des paramètres de filtre dans l'url
-        if (isset($_POST["categorie_id"])) {
-            $categorie_id = $_POST["categorie_id"];
-        } else {
-            $categorie_id = "";
-        }; 
-        if (isset($_POST["format_id"])) {
-            $format_id = $_POST["format_id"];
-        } else {
-            $format_id = "";
-        };  
-        if (isset($_POST["date"])) {
-            $order = $_POST["date"];
-        } else {
-            $order = "";
-        }; 
-
+        // Initialisation de variable pour les filtres de requettes Query
+        $categorie_id = "";
+        $format_id = "";
+        $order = "";
         $orderby = "date";
          
  
