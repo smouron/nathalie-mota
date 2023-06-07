@@ -37,3 +37,14 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 26 - Mise en place de la gestion des flèches photo précédente et photo suivante + affichage des informations demandées (nom, années et catégorie)
 27 - Mise en place de la gestion du scrolling horizontal des filtres avec l'aide de Swiper
 28 - Modification de la gestion des filtres avec gestion par Ajax pour ne pas avoir la page qui se recharge à chaque fois
+29 - Mise en place d'url dynamique pour les requettes Ajax
+30 - Mise en ligne du site à l'adresse : https://www.sanoecreation.fr/OpenClassRooms/nathalie-motta/
+
+## Versions WP et des différentes extensions et plugins qui sont utilisés
+
+- WordPress, version 6.2.2
+  - Custom Post, Type UI version 1.13.6
+  - Advanced Custom, Fields version 6.1.6
+  - Contact Form 7, version 5.7.7
+  - WP-Optimize, version 3.2.15
+  - Swiper, version 9.2.0
