@@ -28,6 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const swiper = new Swiper(".swiper-container", {
     freeMode: true,
     grabCursor: true,
+    breakpoints: {
+      1200: {
+        grabCursor: false,
+        allowTouchMove: false,
+      },
+    },
   });
 
   (function ($) {
