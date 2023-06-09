@@ -42,14 +42,32 @@ document.addEventListener("DOMContentLoaded", function () {
         // Empêcher l'envoi classique du formulaire
         e.preventDefault();
 
+        // Récupération du jeton de sécurité
+        const nonce = $("#nonce").val();
+
         // Récupération de l'adresse de la page	pour pointer Ajax
+        const ajaxurl = $("#ajaxurl").val();
+
+        let pathname = window.location.pathname;
+        let pathnamefinal = pathname.substring(
+          0,
+          pathname.lastIndexOf("/photo") + 1
+        );
         let url =
           window.location.protocol +
           "//" +
           window.location.host +
           window.location.pathname +
           "/wp-admin/admin-ajax.php";
-        // console.log("url = " + url);
+
+        console.log(
+          "Filtres.js - url: " +
+            url +
+            " - ajaxurl: " +
+            ajaxurl +
+            " - nonce: " +
+            nonce
+        );
 
         if (document.getElementById("max_pages") !== null) {
           max_pages = document.getElementById("max_pages").value;
@@ -79,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
           dataType: "html", // <-- Change dataType from 'html' to 'json'
           data: {
             action: "nathalie_motta_load",
+            nonce: nonce,
             paged: 1,
             categorie_id: categorie_id,
             format_id: format_id,

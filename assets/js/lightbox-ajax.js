@@ -160,7 +160,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Affichage de la photo et des informations demandées
       $.changePhoto = function () {
+        // Récupération du jeton de sécurité
+        const nonce = $("#nonce").val();
+
         // Récupération de l'adresse de la page	pour pointer Ajax
+        const ajaxurl = $("#ajaxurl").val();
+
         let pathname = window.location.pathname;
         let pathnamefinal = pathname.substring(
           0,
@@ -173,7 +178,10 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.host +
           pathnamefinal +
           "wp-admin/admin-ajax.php";
-        // console.log("url = " + url);
+
+        console.log(
+          "Lightox-ajax.js - url: " + url + " - ajaxurl: " + ajaxurl + " - nonce: " + nonce
+        );
 
         // On affiche une image de chargement
         $(".lightbox__loader").removeClass("hidden");
@@ -188,6 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
           dataType: "html", // <-- Change dataType from 'html' to 'json'
           data: {
             action: "nathalie_motta_lightbox",
+            nonce: nonce,
             photo_id: idPhoto,
           },
           success: function (res) {

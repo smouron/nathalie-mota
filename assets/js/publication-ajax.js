@@ -12,7 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
       $("#load-more").click(function (e) {
         e.preventDefault();
 
+        // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
+        // Récupération du jeton de sécurité
+        const nonce = $("#nonce").val();
+
         // Récupération de l'adresse de la page	pour pointer Ajax
+        const ajaxurl = $("#ajaxurl").val();
+
         let pathname = window.location.pathname;
         let pathnamefinal = pathname.substring(
           0,
@@ -24,7 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.host +
           window.location.pathname +
           "wp-admin/admin-ajax.php";
-        // console.log("url = " + url);
+
+        console.log(
+          "publications.js - url: " +
+            url +
+            " - ajaxurl: " +
+            ajaxurl +
+            " - nonce: " +
+            nonce
+        );
 
         if (document.getElementById("currentPage") !== null) {
           currentPage = document.getElementById("currentPage").value;
@@ -53,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
           dataType: "html", // <-- Change dataType from 'html' to 'json'
           data: {
             action: "nathalie_motta_load",
+            nonce: nonce,
             paged: currentPage,
             categorie_id: categorie_id,
             format_id: format_id,
