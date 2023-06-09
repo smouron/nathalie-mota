@@ -62,11 +62,11 @@
                   <div class="thumbnail">
                      <h2 class="info-title"><?php the_title(); ?></h2>
                      <h3 class="info-tax"><?php echo $categorie; ?></h3>
-                     <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>"><span class="detail-photo"></span></a>                            
+                     <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>" aria-label="<?php the_title(); ?>"><span class="detail-photo"></span></a>                            
                      <?php the_post_thumbnail('desktop-home'); ?>                     
                      <form>
                         <input type="hidden" name="postid" class="postid" value="<?php the_id(); ?>">
-                        <button class="openLightbox"
+                        <button class="openLightbox" title="Afficher la photo en plein écran" alt="Afficher la photo en plein écran"
                               data-postid="<?php echo get_the_id(); ?>"            
                               data-arrow="true" 
                         >
@@ -78,13 +78,13 @@
        <?php endwhile; ?>
    </article>
    <div class="lightbox hidden" id="lightbox">    
-      <button class="lightbox__close">Fermer</button>
+      <button class="lightbox__close" title="Refermer le plein écran">Fermer</button>
       <div class="lightbox__container">               
          <div class="lightbox__loader hidden"></div>
          <div class="lightbox__container_info flexcolumn" id="lightbox__container_info"> 
             <div class="lightbox__container_content flexcolumn" id="lightbox__container_content"></div>   
-               <button class="lightbox__next" title="Photo suivante"></button>
-               <button class="lightbox__prev" title="Photo précédente"></button>                     
+               <button class="lightbox__next" aria-label="Voir la photo suivante" title="Photo suivante"></button>
+               <button class="lightbox__prev" aria-label="Voir la photo précédente" title="Photo précédente"></button>                     
             </div>        
          </div>
       </div> 

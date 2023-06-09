@@ -1,6 +1,22 @@
 // Gestion de l'affichage des photos supplémentaires en page d'accueil
 // en fonction de la valeur des filtres
 
+/**
+ * Variables récupérées / renvoyées
+ *
+ * nonce : jeton de sécurité
+ * ajaxurl : adresse URL de la fonction Ajax dans WP
+ *
+ * categorie_id : n° de la catégorie demandée ou vide si on ne filtre pas par catégorie
+ * format_id : n° du format demandé ou vide si on ne filtre pas par format
+ * order : ordre de tri Croissant (ASC) ou Décroissant (DEC)
+ * orderby : actuellement on trie par la date mais on pourrait éventuellement avoir un autre critère
+ * posts_per_page : nombre de photos à afficher en même temps
+ * currentPage : page affichée au moment de l'utilisation du script
+ * max_pages : page maximum en fonction des filtres
+ *
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
   // Récupération des variables de PHP
 
@@ -31,14 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.pathname +
           "wp-admin/admin-ajax.php";
 
-        console.log(
-          "publications.js - url: " +
-            url +
-            " - ajaxurl: " +
-            ajaxurl +
-            " - nonce: " +
-            nonce
-        );
+        // console.log("url: " + url + " - ajaxurl: " + ajaxurl + " - nonce: " + nonce);
 
         if (document.getElementById("currentPage") !== null) {
           currentPage = document.getElementById("currentPage").value;
@@ -74,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
             orderby: orderby,
             order: order,
           },
+
           success: function (res) {
             $(".publication-list").append(res);
 

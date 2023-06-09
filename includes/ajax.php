@@ -18,10 +18,11 @@ function nathalie_motta_load() {
        	! wp_verify_nonce( $_REQUEST['nonce'], 'nathalie_motta_nonce' ) 
     ) {
     	wp_send_json_error( "Vous n’avez pas l’autorisation d’effectuer cette action.", 403 );
+      exit;
   	}
 
   // Récupération des données pour le filtre et on les nettoie
-  // pour éviter toute injection SQL ou autre fourberie
+  // pour éviter toute injection SQL 
   $categorie_id = sanitize_text_field($_POST['categorie_id']);
   $format_id = sanitize_text_field($_POST['format_id']);
   $orderby = sanitize_text_field($_POST['orderby']);
@@ -102,11 +103,13 @@ function nathalie_motta_lightbox() {
        	! wp_verify_nonce( $_REQUEST['nonce'], 'nathalie_motta_nonce' ) 
     ) {
     	wp_send_json_error( "Vous n’avez pas l’autorisation d’effectuer cette action.", 403 );
+      exit;
   	}
 
   // On vérifie que l'identifiant a bien été envoyé
   if( ! isset( $_POST['photo_id'] ) ) {
     wp_send_json_error( "L'identifiant de la photo est manquant.", 403 );
+    exit;
   }
 
   // Récupération des données pour le filtre

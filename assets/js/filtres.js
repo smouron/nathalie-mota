@@ -2,10 +2,26 @@
 //
 // console.log("Script filtres en ajax lancé !!!");
 
+/**
+ * Variables récupérées / renvoyées
+ *
+ * nonce : jeton de sécurité
+ * ajaxurl : adresse URL de la fonction Ajax dans WP
+ * 
+ * categorie_id : n° de la catégorie demandée ou vide si on ne filtre pas par catégorie
+ * format_id : n° du format demandé ou vide si on ne filtre pas par format
+ * order : ordre de tri Croissant (ASC) ou Décroissant (DEC)
+ * orderby : actuellement on trie par la date mais on pourrait éventuellement avoir un autre critère 
+ * currentPage : page affichée au moment de l'utilisation du script
+ * max_pages : page maximum en fonction des filtres
+ * nb_total_posts : nombres de photos à afficher
+ * 
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
   const message = "<p>Désolé. Aucun article ne correspond à cette demande.<p>";
 
-  // Initialisation des variables des filtres
+  // Initialisation des variables des filtres au premier affichage du site
   let categorie_id = "";
   if (document.getElementById("categorie_id")) {
     document.getElementById("categorie_id").value = "";
@@ -59,15 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.host +
           window.location.pathname +
           "/wp-admin/admin-ajax.php";
-
-        console.log(
-          "Filtres.js - url: " +
-            url +
-            " - ajaxurl: " +
-            ajaxurl +
-            " - nonce: " +
-            nonce
-        );
 
         if (document.getElementById("max_pages") !== null) {
           max_pages = document.getElementById("max_pages").value;

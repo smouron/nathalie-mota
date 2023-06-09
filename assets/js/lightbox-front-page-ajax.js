@@ -1,4 +1,16 @@
-// Script pour la gestion de la Lightbox sur toutes les photos
+// Script pour la gestion de la Lightbox sur toutes les photos uniqueùent sur la page d'acceuil
+
+/**
+ * Variables récupérées / renvoyées
+ *
+ * nonce : jeton de sécurité
+ * ajaxurl : adresse URL de la fonction Ajax dans WP
+ *
+ * total_posts : tableau de toutes les données des photos correspondantes aux filtres
+ * nb_total_posts : nombres de photos à afficher
+ * photo_id : indentifiant de la photo à afficher
+ *
+ */
 
 document.addEventListener("DOMContentLoaded", function () {
   // console.log("Script lightbox lancé !!!");
@@ -86,10 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Gestion de la pagination de la lightbox
       $(".publication-list").click(function (e) {
         e.preventDefault();
-        // Récupération des élements du DOM enfants
-        // console.log(e.currentTarget);
-        // console.log(e.target.className);
 
+        // Récupération des élements du DOM enfants
         recupData();
 
         // On recherche si c'est une class detail-photo
@@ -119,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           $(".lightbox").removeClass("hidden");
 
-          // On s'assure de le container est vide avant de chager le code
+          // On s'assure de le container est vide avant de charger le code
           $("#lightbox__container_content").empty();
           $.changePhoto();
         }
@@ -193,15 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.pathname +
           "wp-admin/admin-ajax.php";
 
-        console.log(
-          "Lightox-front-page-ajax.js - url: " +
-            url +
-            " - ajaxurl: " +
-            ajaxurl +
-            " - nonce: " +
-            nonce
-        );
-
         // On affiche une image de chargement
         $(".lightbox__loader").removeClass("hidden");
         // On cache tout le reste en attendant le réponse
@@ -220,15 +221,13 @@ document.addEventListener("DOMContentLoaded", function () {
             categorie_id: 49,
           },
           success: function (res) {
-            // On a eu la réponse que c'est bon
-            // On retire l'image de chargement
+            // On a eu la réponse que c'est bon donc on retire l'image de chargement
             $("#lightbox__container_content").empty().append(res);
             // On affiche les informations de la lightbox
             $(".lightbox__loader").addClass("hidden");
             $("#lightbox__container_content").removeClass("hidden");
             // On affiche les flèches que si c'était demandé et que l'on a plus d'une photo
             if (arrow && nb_total_posts > 1) {
-              // Si on veut les fleches, on les affiche
               $(".lightbox__next").removeClass("hidden");
               $(".lightbox__prev").removeClass("hidden");
             }
@@ -236,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       };
 
+      // On referme la lightbox au click sur la croix
       $.close = function () {
         $(".lightbox").addClass("hidden");
       };
