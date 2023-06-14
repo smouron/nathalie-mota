@@ -3,7 +3,7 @@
  * The header
  *
  * @package WordPress
- * @subpackage nathalie-motta
+ * @subpackage nathalie-mota
  */
 
 ?>

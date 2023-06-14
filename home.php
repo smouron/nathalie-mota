@@ -3,7 +3,7 @@
  * The Home : ACCUEIL BLOG
  *
  * @package WordPress
- * @subpackage nathalie-motta theme
+ * @subpackage nathalie-mota theme
  */
 
 

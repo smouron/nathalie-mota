@@ -4,18 +4,18 @@
  * fonctions pour AJAX 
  *
  * @package WordPress
- * @subpackage nathalie-motta theme
+ * @subpackage nathalie-mota theme
  */
 
 
 /**
 *  Génération de l'affichage des photos
 */  
-function nathalie_motta_load() { 
+function nathalie_mota_load() { 
   // Vérification de sécurité
   if( 
 		! isset( $_REQUEST['nonce'] ) or 
-       	! wp_verify_nonce( $_REQUEST['nonce'], 'nathalie_motta_nonce' ) 
+       	! wp_verify_nonce( $_REQUEST['nonce'], 'nathalie_mota_nonce' ) 
     ) {
     	wp_send_json_error( "Vous n’avez pas l’autorisation d’effectuer cette action.", 403 );
       exit;
@@ -90,17 +90,17 @@ function nathalie_motta_load() {
     wp_reset_postdata();
     exit;
   }
-  add_action('wp_ajax_nathalie_motta_load', 'nathalie_motta_load');
-  add_action('wp_ajax_nopriv_nathalie_motta_load', 'nathalie_motta_load');
+  add_action('wp_ajax_nathalie_mota_load', 'nathalie_mota_load');
+  add_action('wp_ajax_nopriv_nathalie_mota_load', 'nathalie_mota_load');
 
 
 /**
 *  Récupération des données de de la photo pour la lightbox
 */ 
-function nathalie_motta_lightbox() {
+function nathalie_mota_lightbox() {
   if( 
 		! isset( $_REQUEST['nonce'] ) or 
-       	! wp_verify_nonce( $_REQUEST['nonce'], 'nathalie_motta_nonce' ) 
+       	! wp_verify_nonce( $_REQUEST['nonce'], 'nathalie_mota_nonce' ) 
     ) {
     	wp_send_json_error( "Vous n’avez pas l’autorisation d’effectuer cette action.", 403 );
       exit;
@@ -137,9 +137,7 @@ if($query_lightbox->have_posts()) {
 wp_reset_postdata();
 exit;
  }
-add_action('wp_ajax_nathalie_motta_lightbox', 'nathalie_motta_lightbox');
-add_action('wp_ajax_nopriv_nathalie_motta_lightbox', 'nathalie_motta_lightbox');
+add_action('wp_ajax_nathalie_mota_lightbox', 'nathalie_mota_lightbox');
+add_action('wp_ajax_nopriv_nathalie_mota_lightbox', 'nathalie_mota_lightbox');
 
 ?>
- 
-

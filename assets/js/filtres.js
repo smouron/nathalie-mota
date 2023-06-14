@@ -1,6 +1,6 @@
 // Script pour gérer les filtres d'affichage en page d'accueil (front-page)
 //
-// console.log("Script filtres en ajax lancé !!!");
+console.log("Script filtres en ajax lancé !!!");
 
 /**
  * Variables récupérées / renvoyées
@@ -19,6 +19,9 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
+  const body = document.querySelector("body");
+  const allDashicons = document.querySelectorAll(".dashicons");
+  const allSelect = document.querySelectorAll("select");
   const message = "<p>Désolé. Aucun article ne correspond à cette demande.<p>";
 
   // Initialisation des variables des filtres au premier affichage du site
@@ -37,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let currentPage = 1;
   let max_pages = 1;
+  let selectId = "";
 
   document.getElementById("currentPage").value = 1;
 
@@ -91,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
           url: ajaxurl,
           dataType: "html", // <-- Change dataType from 'html' to 'json'
           data: {
-            action: "nathalie_motta_load",
+            action: "nathalie_mota_load",
             nonce: nonce,
             paged: 1,
             categorie_id: categorie_id,
@@ -129,4 +133,64 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   })(jQuery);
+
+  // Réinitialisation des flèches des select si on click en dehors
+  body.addEventListener("click", (e) => {
+    if (e.target.tagName != "select" && e.target.tagName != "SELECT") {
+      initArrow();
+    }
+  });
+
+  // Fonction pour rechercher un mot dans une variable
+  // retourne vrai si le mot est trouvé, si non retourne false
+  function findWord(word, str) {
+    return RegExp("\\b" + word + "\\b").test(str);
+  }
+
+  // Réinitialisation de l'affichage des flèches sur les select
+  const initArrow = () => {
+    console.log("Initialisation des fleches");
+    allDashicons.forEach((dashicons) => {
+      dashicons.classList.add("select-close");
+      dashicons.classList.remove("select-open");
+    });
+  };
+
+  // Passer de la flèche qui descend à la flèqhe qui monte
+  // et inversement
+  // et force la flèche qui descend sur les 2 autres selects
+  const arrow = (arg) => {
+    allDashicons.forEach((dashicons) => {
+      if (findWord(arg, dashicons.className)) {
+        if (
+          findWord("select-close", dashicons.className) ||
+          findWord("select-open", dashicons.className)
+        ) {
+          // initArrow();
+          if (findWord("select-close", dashicons.className)) {
+            dashicons.classList.remove("select-close");
+            dashicons.classList.add("select-open");
+          } else {
+            dashicons.classList.add("select-close");
+            dashicons.classList.remove("select-open");
+          }
+        }
+      }
+    });
+  };
+
+  // Détection du click sur un select
+  // et modification de la flèche correpondante
+  allSelect.forEach((select) => {
+    select.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // On contrôle si on a clické dans un autre select
+      if (select.id != selectId) {
+        initArrow();
+      }
+      selectId = select.id;
+      arrow(selectId);
+    });
+  });
 });

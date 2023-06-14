@@ -3,7 +3,7 @@
  * The single : ATRICLE BLOG 
  *
  * @package WordPress
- * @subpackage nathalie-motta theme
+ * @subpackage nathalie-mota theme
  */
 
 	get_header();

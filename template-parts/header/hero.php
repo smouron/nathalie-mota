@@ -3,7 +3,7 @@
  * Hero du header
  *
  * @package WordPress
- * @subpackage nathalie-motta theme
+ * @subpackage nathalie-mota theme
  */
 ?>
 

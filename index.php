@@ -3,17 +3,16 @@
  * The main template file.
  *
  *
- * @package nathalie-motta theme
+ * @package nathalie-mota theme
  */
 
 get_header();
 
-echo ('page.php');
 ?>
 
   <div id="wrap">
       <section id="content">
-        <h1>Nathalie Motta</h1>
+        <h1>Nathalie Mota</h1>
         <p>Photographe professionnelle dans l’événementiel</p>
         <!-- Vérification s'il y a au moins 1 article -->
       <?php if(have_posts()) : ?>

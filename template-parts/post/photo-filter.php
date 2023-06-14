@@ -11,8 +11,7 @@
     <!-- $terms->term_taxonomy_id : n° de l'élément de la taxonomie -->
         <div class="filterleft swiper-slide flexrow">
             <div id="filtre-categorie" class="select-filter flexcolumn">   
-                <span class="categorie-up dashicons dashicons-arrow-up hidden"></span>
-                <span class="categorie-down dashicons dashicons-arrow-down"></span>
+                <span class="categorie_id-down dashicons dashicons-arrow-down select-close"></span>
                 <label for="categorie_id"><p>catégories</p></label>
                 <select class="option-filter" name="categorie_id" id="categorie_id">
                     <!-- Génération automatique de la liste des catégories en fonction de ce qu'il y a dans WP -->
@@ -30,8 +29,7 @@
                 </select>
             </div>
             <div id="filtre-format" class="select-filter flexcolumn">      
-                <span class="format-up dashicons dashicons-arrow-up hidden"></span>
-                <span class="format-down dashicons dashicons-arrow-down"></span>
+                <span class="format_id-down dashicons dashicons-arrow-down select-close"></span>
                 <label for="format_id"><p>formats</p></label>
                 <select class="option-filter" name="format_id" id="format_id"> 
                     <!-- Génération automatique de la liste des formats en fonction de ce qu'il y a dans WP -->
@@ -51,8 +49,7 @@
         </div>
         <div class="filterright swiper-slide flexrow">
             <div id="filtre-date" class="select-filter flexcolumn">       
-                <span class="date-up dashicons dashicons-arrow-up hidden"></span>
-                <span class="date-down dashicons dashicons-arrow-down"></span>
+                <span class="date-down dashicons dashicons-arrow-down select-close"></span>
                 <label for="date"><p>trier par</p></label>
                 <select class="option-filter" name="date" id="date">
                     <option value=""></option>

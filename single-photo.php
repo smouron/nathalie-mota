@@ -3,7 +3,7 @@
  * The single : ATRICLE PHOTO 
  *
  * @package WordPress
- * @subpackage nathalie-motta theme
+ * @subpackage nathalie-mota theme
  */
 
 	get_header();
@@ -67,7 +67,7 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 					get_template_part ( 'template-parts/post/photo-common');
 				 ?>
 			<button class="btn btn-all-photos" type="button">
-				<a href="http://127.0.0.1/nathalie-motta/">Toutes les photos</a>
+				<a href="<?php echo home_url( '/' ); ?>" aria-label="Page d'accueil de Nathalie Mota">Toutes les photos</a>
 			</button>
 			</div>
 		</div>
