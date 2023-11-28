@@ -3,7 +3,7 @@
  * The template for displaying the footer
  *
  * @package WordPress
- * @subpackage nathalie-motta
+ * @subpackage nathalie-mota
  */
 ?>
 	<footer id="footer">

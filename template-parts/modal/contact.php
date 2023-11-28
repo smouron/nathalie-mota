@@ -3,7 +3,7 @@
  * Modal contact
  *
  * @package WordPress
- * @subpackage nathalie-motta theme
+ * @subpackage nathalie-mota theme
  */
 ?>
 

@@ -6,14 +6,14 @@ if ( ! function_exists( 'wp_body_open' ) ) {
     }
 }
 
-function nathalie_motta_theme_enqueue() {
+function nathalie_mota_theme_enqueue() {
     //  Chargement du style personnalisé du theme
-    wp_enqueue_style( 'nathalie-motta-style', get_stylesheet_uri(), array(), '1.0' );    
+    wp_enqueue_style( 'nathalie-mota-style', get_stylesheet_uri(), array(), '1.0' );    
     
     //  Chargement de style personnalisé pour le theme
-    wp_enqueue_style( 'nathalie-motta-contact-style', get_stylesheet_directory_uri() . '/assets/css/contact.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/contact.css') ); 
-    wp_enqueue_style( 'nathalie-motta-single-photo-style', get_stylesheet_directory_uri() . '/assets/css/single-photo.css', filemtime(get_stylesheet_directory() . '/assets/css/single-photo.css'));     
-    wp_enqueue_style( 'nathalie-motta-lightbox-style', get_stylesheet_directory_uri() . '/assets/css/lightbox.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/lightbox.css') ); 
+    wp_enqueue_style( 'nathalie-mota-contact-style', get_stylesheet_directory_uri() . '/assets/css/contact.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/contact.css') ); 
+    wp_enqueue_style( 'nathalie-mota-single-photo-style', get_stylesheet_directory_uri() . '/assets/css/single-photo.css', filemtime(get_stylesheet_directory() . '/assets/css/single-photo.css'));     
+    wp_enqueue_style( 'nathalie-mota-lightbox-style', get_stylesheet_directory_uri() . '/assets/css/lightbox.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/lightbox.css') ); 
     
     // swiper-style
     if (is_front_page()) {
@@ -24,24 +24,24 @@ function nathalie_motta_theme_enqueue() {
     }; 
  
     // Chargement des script JS personnalisés
-    wp_enqueue_script( 'nathalie-motta-scripts', get_theme_file_uri( '/assets/js/scripts.js' ), array('jquery'), filemtime(get_stylesheet_directory() . '/assets/js/scripts.js'), true );    
+    wp_enqueue_script( 'nathalie-mota-scripts', get_theme_file_uri( '/assets/js/scripts.js' ), array('jquery'), filemtime(get_stylesheet_directory() . '/assets/js/scripts.js'), true );    
     
     // Script JS chargé pour tout le monde sauf avec front_page 
     if (!is_front_page()) {
-        wp_enqueue_script( 'nathalie-motta-scripts-lightbox-ajax', get_theme_file_uri( '/assets/js/lightbox-ajax.js' ), array('jquery'), filemtime(get_stylesheet_directory() . '/assets/js/lightbox-ajax.js'), true );
+        wp_enqueue_script( 'nathalie-mota-scripts-lightbox-ajax', get_theme_file_uri( '/assets/js/lightbox-ajax.js' ), array('jquery'), filemtime(get_stylesheet_directory() . '/assets/js/lightbox-ajax.js'), true );
     };  
     
     // Script JS disponnibles chargé uniquement avec front_page 
     if (is_front_page()) {
-        wp_enqueue_script( 'nathalie-motta-scripts-filtres', get_theme_file_uri( '/assets/js/filtres.js' ), array('jquery'), filemtime(get_stylesheet_directory() . '/assets/js/filtres.js'), true );   
-        wp_enqueue_script( 'nathalie-motta-scripts-publication-ajax', get_theme_file_uri( '/assets/js/publication-ajax.js' ), array('jquery'), filemtime(get_stylesheet_directory() . '/assets/js/publication-ajax.js'), true );
-        wp_enqueue_script( 'nathalie-motta-scripts-lightbox-ajax', get_theme_file_uri( '/assets/js/lightbox-front-page-ajax.js' ), array('jquery'), filemtime(get_stylesheet_directory() . '/assets/js/lightbox-front-page-ajax.js'), true );
+        wp_enqueue_script( 'nathalie-mota-scripts-filtres', get_theme_file_uri( '/assets/js/filtres.js' ), array('jquery'), filemtime(get_stylesheet_directory() . '/assets/js/filtres.js'), true );   
+        wp_enqueue_script( 'nathalie-mota-scripts-publication-ajax', get_theme_file_uri( '/assets/js/publication-ajax.js' ), array('jquery'), filemtime(get_stylesheet_directory() . '/assets/js/publication-ajax.js'), true );
+        wp_enqueue_script( 'nathalie-mota-scripts-lightbox-ajax', get_theme_file_uri( '/assets/js/lightbox-front-page-ajax.js' ), array('jquery'), filemtime(get_stylesheet_directory() . '/assets/js/lightbox-front-page-ajax.js'), true );
     };   
 
     // activer les Dashicons sur le front-end 
     wp_enqueue_style ( 'dashicons' ); 
 }
-add_action( 'wp_enqueue_scripts', 'nathalie_motta_theme_enqueue' );
+add_action( 'wp_enqueue_scripts', 'nathalie_mota_theme_enqueue' );
 
 
 // Ajouter la prise en charge des images mises en avant
@@ -77,7 +77,7 @@ function register_my_menu(){
 // créer un pour la gestion des widgets dans l'administration
 // et l'activation des sidebars
 // Visibles ensuite dans Apparence / Widgets (widgets_init)
-function nathalie_motta_widgets(){
+function nathalie_mota_widgets(){
     register_sidebar(
         array(
             'name' => "Widget Sidebar",
@@ -102,7 +102,7 @@ function nathalie_motta_widgets(){
         )
     );
  }
- add_action('widgets_init', 'nathalie_motta_widgets'); 
+ add_action('widgets_init', 'nathalie_mota_widgets'); 
 
 
  /**

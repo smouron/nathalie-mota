@@ -1,12 +1,12 @@
 /*
-Theme Name: nathalie-motta
+Theme Name: nathalie-mota
 Theme URI: https://motaphoto.com
 Author: Stéphane Mouron
 Author URI: https://motaphoto.com
-Description: Thème pour le site de partage de séries de photos de Nathalie Motta, avec ses clients
+Description: Thème pour le site de partage de séries de photos de Nathalie Mota, avec ses clients
 Requires at least: WordPress 5.0
 Version: 1.0.0
-Text Domain: nathaliemotta
+Text Domain: nathaliemota
 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -416,7 +416,8 @@ input[type="submit"] {
     margin: auto;
     align-items: center;
     width: 100%;
-    max-height: 966px;
+    max-height: 966px;    
+    overflow: hidden;
 }
 
 .hero-area img {    
@@ -524,6 +525,15 @@ form {
     display: none; 
 }
 
+/* 
+.filter-area #filtre-format:active .dashicons,
+.filter-area #filtre-format:checked .dashicons {
+    transition: all 0.3s ease;
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg); 
+} */
+
 .filter-area .dashicons {  
     /* width: 9px; */
     /* height: 7px;   */
@@ -531,7 +541,20 @@ form {
     display: inline-block;
     top: 32px;
     right: 15px;
-    /* background: url("./assets/img/caret-down.svg") right / 90% no-repeat; */
+}
+
+.select-open {
+    transition: all 0.3s ease;
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg); 
+}
+
+.select-close {
+    transition: all 0.3s ease;
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg); 
 }
 
 .container-news {
@@ -803,7 +826,8 @@ form {
 /*  **********************************  */
 @media all and (max-width: 580px) {
     .filter-area {
-        width: 180%;
+        width: 100%;
+        overflow: hidden;
     }
 
     .news-info h2,

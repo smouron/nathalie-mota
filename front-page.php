@@ -3,7 +3,7 @@
  * The front-page : ACCUEIL 
  *
  * @package WordPress
- * @subpackage nathalie-motta theme
+ * @subpackage nathalie-mota theme
  */
 
     get_header();
@@ -116,7 +116,7 @@
                 <input type="hidden" name="currentPage" id="currentPage" value="<?php  echo $paged; ?>">
                 <input type="hidden" name="ajaxurl" id='ajaxurl' value="<?php echo admin_url( 'admin-ajax.php' ); ?>">
                 <!-- c’est un jeton de sécurité, pour s’assurer que la requête provient bien de ce site, et pas d’un autre -->
-                <input type="hidden" name="nonce" id='nonce' value="<?php echo wp_create_nonce( 'nathalie_motta_nonce' ); ?>" > 
+                <input type="hidden" name="nonce" id='nonce' value="<?php echo wp_create_nonce( 'nathalie_mota_nonce' ); ?>" > 
                 <!-- On cache le bouton s'il n'y a pas plus d'1 page -->
                 <?php if ($max_pages > 1): ?>
                     <button class="btn_load-more" id="load-more">Charger plus</button>

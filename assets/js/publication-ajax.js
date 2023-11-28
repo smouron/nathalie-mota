@@ -35,6 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Récupération de l'adresse de la page	pour pointer Ajax
         const ajaxurl = $("#ajaxurl").val();
 
+        if (document.getElementById("currentPage") !== null) {
+          currentPage = document.getElementById("currentPage").value;
+        }
         // Récupération des valeurs des variables du filtre au moment du click
         const categorie_id = document.getElementById("categorie_id").value;
         const format_id = document.getElementById("format_id").value;
@@ -58,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
           url: ajaxurl,
           dataType: "html", // <-- Change dataType from 'html' to 'json'
           data: {
-            action: "nathalie_motta_load",
+            action: "nathalie_mota_load",
             nonce: nonce,
             paged: currentPage,
             categorie_id: categorie_id,

@@ -5,8 +5,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
+ * @subpackage nathalie-mota theme
  */
 
 get_header();
@@ -15,7 +14,7 @@ get_header();
 
 <div id="wrap">
       <section id="content">
-        <h1>Nathalie Motta - Blog</h1>
+        <h1>Nathalie Mota - Blog</h1>
         <!-- Vérification s'il y a au moins 1 article -->
       <?php if(have_posts()) : ?>
         <div id="loop">
