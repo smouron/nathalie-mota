@@ -1,4 +1,4 @@
-# nathalie-motta
+# nathalie-mota
 
 Projet 11 - Créez un site WordPress complexe pour une photographe freelance
 Du parcours "Développeur WordPress" avec OpenClassrooms
