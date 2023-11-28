@@ -1,7 +1,8 @@
 # nathalie-mota
 
-**Projet 11 - Créez un site WordPress complexe pour une photographe freelance** (du parcours "Développeur WordPress" avec OpenClassrooms)
 ![Nathalie Mota](./Banner-Nathalie-Motta.png)
+
+**Projet 11 - Créez un site WordPress complexe pour une photographe freelance** (du parcours "Développeur WordPress" avec OpenClassrooms)
 
 ## Mission de ce projet
 
@@ -41,7 +42,7 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 - 30 - Mise en ligne du site à l'adresse : https://www.sanoecreation.fr/OpenClassRooms/nathalie-motta/
 - 31 - Ajout de contrôles pour les requettes ajax et éviter les injections SQL
 
-## Versions WP et des différentes extensions et plugins qui sont utilisés
+## Versions au moment de la mise en ligne du projet
 
 - WordPress, version 6.2.2
   - Custom Post, Type UI version 1.13.6
@@ -49,6 +50,9 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
   - Contact Form 7, version 5.7.7
   - WP-Optimize, version 3.2.15
   - Swiper, version 9.2.0
+
+> [!NOTE]
+> A la date du 28/11/2023 on est maintenant passé à la version WordPress 6.4.1
 
 ## Version réalisée
 
