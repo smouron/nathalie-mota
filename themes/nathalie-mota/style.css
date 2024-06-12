@@ -27,6 +27,11 @@ body {
 }
 
 h1 {
+    color: #9d3b3b; 
+    font-style: italic;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 54px;
     padding-top: 50px;
     text-align: center;
 }
