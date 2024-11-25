@@ -67,4 +67,4 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 
 ![Nathalie Mota](./monitor-g9ceeb1f8d_640.png)
 
-[Le site "Nathalie Mota" visible en ligne](https://nathalie-mota.stephane-mouron.fr/)
+[Le site "Nathalie Mota" visible en ligne](https://nathalie-mota.stephane-mouron.com/)
