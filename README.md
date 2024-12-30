@@ -52,7 +52,7 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
   - Swiper, version 9.2.0
 
 > [!NOTE]
-> A la date du 28/11/2023 on est maintenant passé à la version WordPress 6.4.1
+> A la date du 25/11/2024 on est maintenant passé à la version WordPress 6.7.1 + ajout d'une bannière pour préciser que c'est le résultat d'un exercice
 
 ### Les modifications personnelles après la soutenance
 
@@ -69,4 +69,4 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 
 ![Nathalie Mota](./monitor-g9ceeb1f8d_640.png)
 
-[Le site "Nathalie Mota" visible en ligne](https://nathalie-mota.stephane-mouron.fr/)
+[Le site "Nathalie Mota" visible en ligne](https://nathalie-mota.stephane-mouron.com/)
