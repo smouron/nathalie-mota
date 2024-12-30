@@ -44,18 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("currentPage").value = 1;
 
-  // Gestion du déplacement des filtres horizontalement
-  const swiper = new Swiper(".swiper-container", {
-    freeMode: true,
-    grabCursor: true,
-    breakpoints: {
-      1200: {
-        grabCursor: false,
-        allowTouchMove: false,
-      },
-    },
-  });
-
   (function ($) {
     $(document).ready(function () {
       $(".option-filter").change(function (e) {

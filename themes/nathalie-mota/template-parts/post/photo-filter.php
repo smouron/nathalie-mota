@@ -2,14 +2,14 @@
 // Gestion des filtres d'affichage des photos en page d'accueil (front-page)       
 ?>
 
-<div class="filter-area swiper-container">
-    <form class="flexrow swiper-wrapper" method="post" >
+<div class="filter-area" id="filter-area">
+    <form class="flexrow" method="post" >
     <!--  -->
     <!-- $terms->term_id :  -->
     <!-- $terms->taxonomy : nom de la taxonomie -->
     <!-- $terms->name : nom de l'élément de la taxonomie -->
     <!-- $terms->term_taxonomy_id : n° de l'élément de la taxonomie -->
-        <div class="filterleft swiper-slide flexrow">
+        <div class="filterleft flexrow">
             <div id="filtre-categorie" class="select-filter flexcolumn">   
                 <span class="categorie_id-down dashicons dashicons-arrow-down select-close"></span>
                 <label for="categorie_id"><p>catégories</p></label>
@@ -47,7 +47,7 @@
                 </select>
             </div>
         </div>
-        <div class="filterright swiper-slide flexrow">
+        <div class="filterright flexrow">
             <div id="filtre-date" class="select-filter flexcolumn">       
                 <span class="date-down dashicons dashicons-arrow-down select-close"></span>
                 <label for="date"><p>trier par</p></label>
