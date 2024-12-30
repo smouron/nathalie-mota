@@ -55,12 +55,14 @@ La mission est de développer le site sous WordPress, du photographe Nathalie Mo
 > A la date du 28/11/2023 on est maintenant passé à la version WordPress 6.4.1
 
 ### Les modifications personnelles après la soutenance
+
 <ul>
     <li>Modification header : suppression du lien Accueil imposé par OpenClassrooms mais qui était en double du lien du logo.</li>
     <li>Ajout d'une pas avec les mentions légales.</li>
     <li>Mise en à jour de la page A Propos.</li>
     <li>Ajout d'extensions de sécurité.</li>    
     <li>Modification des balises titres pour respecter la sémantique HTML.</li>
+    <li>Le hero demandé par OpenClassrooms avait un problème de contraste entre le titre et l'image d'arrière plan => modification pour corriger se problème.</li>
 </ul>
 
 ### Le site final
